@@ -1,0 +1,1963 @@
+{
+  "purpose": "Simulator ground truth for evaluation ONLY; not a perception or navigation input.",
+  "world_name": "parking_lot",
+  "units": "metres and radians",
+  "scale": 1.0,
+  "seed": 12,
+  "bay_count": 47,
+  "parked_car_count": 47,
+  "asphalt_size_m": [
+    48.0,
+    40.0
+  ],
+  "nominal_aisle_width_m": 6.4,
+  "painted_markings": false,
+  "random_angle_range_deg": 35.0,
+  "minimum_car_clearance_m": 0.08,
+  "robot": {
+    "name": "parking_robot",
+    "drive": "four powered wheels, front Ackermann steering",
+    "footprint_size_m": [
+      4.62,
+      2.12
+    ],
+    "wheelbase_m": 2.75,
+    "steering_limit_rad": 0.55,
+    "sensors": [
+      "360 degree GPU LiDAR",
+      "RGB camera",
+      "IMU",
+      "front contact bumper"
+    ],
+    "wheel_radius_m": 0.32
+  },
+  "pedestrian_count": 6,
+  "pedestrians": [
+    {
+      "name": "pedestrian_1",
+      "start": [
+        -18.0,
+        18.3
+      ],
+      "end": [
+        -7.0,
+        18.3
+      ],
+      "ground_z_m": 0.12,
+      "speed": 0.9,
+      "delay": 0,
+      "shirt": "blue"
+    },
+    {
+      "name": "pedestrian_2",
+      "start": [
+        -5.0,
+        18.3
+      ],
+      "end": [
+        6.0,
+        18.3
+      ],
+      "ground_z_m": 0.12,
+      "speed": 0.9,
+      "delay": 1,
+      "shirt": "orange"
+    },
+    {
+      "name": "pedestrian_3",
+      "start": [
+        8.0,
+        18.3
+      ],
+      "end": [
+        19.0,
+        18.3
+      ],
+      "ground_z_m": 0.12,
+      "speed": 0.8,
+      "delay": 2,
+      "shirt": "green"
+    },
+    {
+      "name": "pedestrian_4",
+      "start": [
+        -17.0,
+        -18.3
+      ],
+      "end": [
+        -3.0,
+        -18.3
+      ],
+      "ground_z_m": 0.12,
+      "speed": 0.9,
+      "delay": 0,
+      "shirt": "orange"
+    },
+    {
+      "name": "pedestrian_5",
+      "start": [
+        1.0,
+        -18.3
+      ],
+      "end": [
+        17.0,
+        -18.3
+      ],
+      "ground_z_m": 0.12,
+      "speed": 1.0,
+      "delay": 2,
+      "shirt": "blue"
+    },
+    {
+      "name": "pedestrian_S2_blocker",
+      "start": [
+        2.5,
+        11.2
+      ],
+      "end": [
+        -3.5,
+        11.2
+      ],
+      "speed": 0.8,
+      "delay": 0,
+      "shirt": "green",
+      "ground_z_m": 0.0
+    }
+  ],
+  "suggested_robot_spawn": {
+    "position_m": [
+      -20.5,
+      -9.0,
+      0.05
+    ],
+    "yaw_rad": 0.0
+  },
+  "bays": [
+    {
+      "id": "S1_left",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -16.6,
+        14.4
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S1_left",
+        "type": "sedan",
+        "color_name": "silver",
+        "rgba": "0.63 0.68 0.72 1",
+        "position_m": [
+          -16.6,
+          14.4,
+          0.0
+        ],
+        "yaw_rad": 1.0471975511965976,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S1_right",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -11.4,
+        14.4
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S1_right",
+        "type": "sedan",
+        "color_name": "blue",
+        "rgba": "0.06 0.22 0.55 1",
+        "position_m": [
+          -11.4,
+          14.4,
+          0.0
+        ],
+        "yaw_rad": 2.0943951023931953,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S2_-1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -4.66,
+        14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S2_-1",
+        "type": "sedan",
+        "color_name": "red",
+        "rgba": "0.66 0.08 0.07 1",
+        "position_m": [
+          -4.66,
+          14.6,
+          0.0
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S3_-1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -15.91,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S3_-1",
+        "type": "sedan",
+        "color_name": "white",
+        "rgba": "0.88 0.90 0.88 1",
+        "position_m": [
+          -15.91,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S5_side_-1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        11.24,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S5_side_-1",
+        "type": "sedan",
+        "color_name": "green",
+        "rgba": "0.12 0.36 0.25 1",
+        "position_m": [
+          11.24,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S5_approach_-1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        10.815,
+        -10.7
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S5_approach_-1",
+        "type": "sedan",
+        "color_name": "ochre",
+        "rgba": "0.82 0.48 0.09 1",
+        "position_m": [
+          10.815,
+          -10.7,
+          0.0
+        ],
+        "yaw_rad": 0.0,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S6_-1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        8.94,
+        14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S6_-1",
+        "type": "sedan",
+        "color_name": "silver",
+        "rgba": "0.63 0.68 0.72 1",
+        "position_m": [
+          8.94,
+          14.6,
+          0.0
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S2_1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        4.66,
+        14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S2_1",
+        "type": "sedan",
+        "color_name": "blue",
+        "rgba": "0.06 0.22 0.55 1",
+        "position_m": [
+          4.66,
+          14.6,
+          0.0
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S3_1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -12.09,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S3_1",
+        "type": "sedan",
+        "color_name": "red",
+        "rgba": "0.66 0.08 0.07 1",
+        "position_m": [
+          -12.09,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S5_side_1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        16.76,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S5_side_1",
+        "type": "sedan",
+        "color_name": "white",
+        "rgba": "0.88 0.90 0.88 1",
+        "position_m": [
+          16.76,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S5_approach_1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        17.185,
+        -10.7
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S5_approach_1",
+        "type": "sedan",
+        "color_name": "green",
+        "rgba": "0.12 0.36 0.25 1",
+        "position_m": [
+          17.185,
+          -10.7,
+          0.0
+        ],
+        "yaw_rad": 0.0,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S6_1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        19.06,
+        14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S6_1",
+        "type": "sedan",
+        "color_name": "ochre",
+        "rgba": "0.82 0.48 0.09 1",
+        "position_m": [
+          19.06,
+          14.6,
+          0.0
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S4_-1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -1.9741564,
+        -11.6176808
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S4_-1",
+        "type": "sedan",
+        "color_name": "silver",
+        "rgba": "0.63 0.68 0.72 1",
+        "position_m": [
+          -1.9741564,
+          -11.6176808,
+          0.0
+        ],
+        "yaw_rad": 0.9599310885968813,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "S4_1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        1.9741564,
+        -14.3823192
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_S4_1",
+        "type": "sedan",
+        "color_name": "blue",
+        "rgba": "0.06 0.22 0.55 1",
+        "position_m": [
+          1.9741564,
+          -14.3823192,
+          0.0
+        ],
+        "yaw_rad": 0.9599310885968813,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "north_filler_0",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -20.3,
+        14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_north_filler_0",
+        "type": "sedan",
+        "color_name": "red",
+        "rgba": "0.66 0.08 0.07 1",
+        "position_m": [
+          -20.3,
+          14.6,
+          0.0
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "north_filler_1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -7.4,
+        14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_north_filler_1",
+        "type": "sedan",
+        "color_name": "white",
+        "rgba": "0.88 0.90 0.88 1",
+        "position_m": [
+          -7.4,
+          14.6,
+          0.0
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "south_filler_0",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -20.4,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_south_filler_0",
+        "type": "sedan",
+        "color_name": "green",
+        "rgba": "0.12 0.36 0.25 1",
+        "position_m": [
+          -20.4,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": -1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "south_filler_1",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -18.15,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_south_filler_1",
+        "type": "sedan",
+        "color_name": "ochre",
+        "rgba": "0.82 0.48 0.09 1",
+        "position_m": [
+          -18.15,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": -1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "south_filler_2",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -9.2,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_south_filler_2",
+        "type": "sedan",
+        "color_name": "silver",
+        "rgba": "0.63 0.68 0.72 1",
+        "position_m": [
+          -9.2,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": -1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "south_filler_3",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -6.5,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_south_filler_3",
+        "type": "sedan",
+        "color_name": "blue",
+        "rgba": "0.06 0.22 0.55 1",
+        "position_m": [
+          -6.5,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": -1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "south_filler_4",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        5.6,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_south_filler_4",
+        "type": "sedan",
+        "color_name": "red",
+        "rgba": "0.66 0.08 0.07 1",
+        "position_m": [
+          5.6,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": -1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "south_filler_5",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        8.1,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_south_filler_5",
+        "type": "sedan",
+        "color_name": "white",
+        "rgba": "0.88 0.90 0.88 1",
+        "position_m": [
+          8.1,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": -1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "south_filler_6",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        20.2,
+        -14.6
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_south_filler_6",
+        "type": "sedan",
+        "color_name": "green",
+        "rgba": "0.12 0.36 0.25 1",
+        "position_m": [
+          20.2,
+          -14.6,
+          0.0
+        ],
+        "yaw_rad": -1.5707963267948966,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B01",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -15.4,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B01",
+        "type": "sedan",
+        "color_name": "ochre",
+        "rgba": "0.82 0.48 0.09 1",
+        "position_m": [
+          -15.4,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.5743469298623556,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B02",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -12.6,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B02",
+        "type": "sedan",
+        "color_name": "silver",
+        "rgba": "0.63 0.68 0.72 1",
+        "position_m": [
+          -12.6,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.5488090175730997,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B03",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -9.8,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B03",
+        "type": "sedan",
+        "color_name": "blue",
+        "rgba": "0.06 0.22 0.55 1",
+        "position_m": [
+          -9.8,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.5475610417475096,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B04",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -7.0,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B04",
+        "type": "sedan",
+        "color_name": "red",
+        "rgba": "0.66 0.08 0.07 1",
+        "position_m": [
+          -7.0,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.620698731490241,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B05",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -4.2,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B05",
+        "type": "sedan",
+        "color_name": "white",
+        "rgba": "0.88 0.90 0.88 1",
+        "position_m": [
+          -4.2,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.6390930929534924,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B06",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -1.4,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B06",
+        "type": "sedan",
+        "color_name": "green",
+        "rgba": "0.12 0.36 0.25 1",
+        "position_m": [
+          -1.4,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.5882838986895125,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B07",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        1.4,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B07",
+        "type": "sedan",
+        "color_name": "ochre",
+        "rgba": "0.82 0.48 0.09 1",
+        "position_m": [
+          1.4,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.6023451581317774,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B08",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        4.2,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B08",
+        "type": "sedan",
+        "color_name": "silver",
+        "rgba": "0.63 0.68 0.72 1",
+        "position_m": [
+          4.2,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.5274635640856682,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B09",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        7.0,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B09",
+        "type": "sedan",
+        "color_name": "blue",
+        "rgba": "0.06 0.22 0.55 1",
+        "position_m": [
+          7.0,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.5441845721898069,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B10",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        9.8,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B10",
+        "type": "sedan",
+        "color_name": "red",
+        "rgba": "0.66 0.08 0.07 1",
+        "position_m": [
+          9.8,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.5566302517939177,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B11",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        12.6,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B11",
+        "type": "sedan",
+        "color_name": "white",
+        "rgba": "0.88 0.90 0.88 1",
+        "position_m": [
+          12.6,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.5626714633933874,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "B12",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        15.4,
+        3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_B12",
+        "type": "sedan",
+        "color_name": "green",
+        "rgba": "0.12 0.36 0.25 1",
+        "position_m": [
+          15.4,
+          3.2,
+          0.0
+        ],
+        "yaw_rad": -1.5482716539840253,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C01",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -15.4,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C01",
+        "type": "sedan",
+        "color_name": "ochre",
+        "rgba": "0.82 0.48 0.09 1",
+        "position_m": [
+          -15.4,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.521271254155449,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C02",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -12.6,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C02",
+        "type": "sedan",
+        "color_name": "silver",
+        "rgba": "0.63 0.68 0.72 1",
+        "position_m": [
+          -12.6,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.5624263967812497,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C03",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -9.8,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C03",
+        "type": "sedan",
+        "color_name": "blue",
+        "rgba": "0.06 0.22 0.55 1",
+        "position_m": [
+          -9.8,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.5236399490677732,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C04",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -7.0,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C04",
+        "type": "sedan",
+        "color_name": "red",
+        "rgba": "0.66 0.08 0.07 1",
+        "position_m": [
+          -7.0,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.627480848409495,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C05",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -4.2,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C05",
+        "type": "sedan",
+        "color_name": "white",
+        "rgba": "0.88 0.90 0.88 1",
+        "position_m": [
+          -4.2,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.5091965822638496,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C06",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        -1.4,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C06",
+        "type": "sedan",
+        "color_name": "green",
+        "rgba": "0.12 0.36 0.25 1",
+        "position_m": [
+          -1.4,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.615312014414685,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C07",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        1.4,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C07",
+        "type": "sedan",
+        "color_name": "ochre",
+        "rgba": "0.82 0.48 0.09 1",
+        "position_m": [
+          1.4,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.5114006268003455,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C08",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        4.2,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C08",
+        "type": "sedan",
+        "color_name": "silver",
+        "rgba": "0.63 0.68 0.72 1",
+        "position_m": [
+          4.2,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.5968988433407594,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C09",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        7.0,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C09",
+        "type": "sedan",
+        "color_name": "blue",
+        "rgba": "0.06 0.22 0.55 1",
+        "position_m": [
+          7.0,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.5480371764918954,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C10",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        9.8,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C10",
+        "type": "sedan",
+        "color_name": "red",
+        "rgba": "0.66 0.08 0.07 1",
+        "position_m": [
+          9.8,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.5574779682446553,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C11",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        12.6,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C11",
+        "type": "sedan",
+        "color_name": "white",
+        "rgba": "0.88 0.90 0.88 1",
+        "position_m": [
+          12.6,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.6186048559008677,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    },
+    {
+      "id": "C12",
+      "row": "scenario",
+      "occupied": true,
+      "center_m": [
+        15.4,
+        -3.2
+      ],
+      "bay_size_m": [
+        2.8,
+        5.2
+      ],
+      "car": {
+        "model_name": "car_C12",
+        "type": "sedan",
+        "color_name": "green",
+        "rgba": "0.12 0.36 0.25 1",
+        "position_m": [
+          15.4,
+          -3.2,
+          0.0
+        ],
+        "yaw_rad": 1.5035808070789174,
+        "body_size_m": [
+          4.5,
+          1.84,
+          1.52
+        ],
+        "envelope_m": [
+          4.62,
+          2.12,
+          1.535
+        ]
+      }
+    }
+  ],
+  "layout_mode": "scenarios",
+  "scenarios": [
+    {
+      "id": "S1",
+      "name": "Inward-angled cars",
+      "kind": "tapered_gap",
+      "expected": "REJECT",
+      "reason": "Wide entrance, but inward-pointing cars obstruct the perpendicular final footprint.",
+      "goal_pose_m_deg": [
+        -14.0,
+        14.6,
+        -90.0
+      ],
+      "spawn_pose_m_deg": [
+        -7.125,
+        10.475,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        -18.4,
+        11.5,
+        -9.6,
+        17.395
+      ],
+      "static_goal_collisions": [
+        "car_S1_left",
+        "car_S1_right"
+      ],
+      "static_goal_fits": false
+    },
+    {
+      "id": "S2",
+      "name": "Usable space, pedestrian crossing",
+      "kind": "pedestrian_block",
+      "expected": "WAIT_WHILE_BLOCKED",
+      "reason": "Static goal and reverse path fit; a walking person initially occupies the swept path. Reassess after they clear it.",
+      "goal_pose_m_deg": [
+        0.0,
+        14.6,
+        -90.0
+      ],
+      "spawn_pose_m_deg": [
+        6.875,
+        10.475,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        -3.6,
+        11.5,
+        3.6,
+        17.395
+      ],
+      "static_goal_collisions": [],
+      "static_goal_fits": true,
+      "reference_path_static_clear": true,
+      "reference_path_collision_samples": [],
+      "reference_path_csv": "reference_paths/S2_reverse.csv",
+      "pedestrian_intersects_reference_path_at_start": true,
+      "blocking_pedestrian": "pedestrian_S2_blocker"
+    },
+    {
+      "id": "S3",
+      "name": "Too narrow",
+      "kind": "narrow_gap",
+      "expected": "REJECT",
+      "reason": "1.70 m opening is narrower than the 2.12 m vehicle, even before safety margins.",
+      "opening_width_m": 1.7,
+      "goal_pose_m_deg": [
+        -14.0,
+        -14.6,
+        90.0
+      ],
+      "spawn_pose_m_deg": [
+        -7.125,
+        -10.475,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        -14.85,
+        -17.395,
+        -13.15,
+        -11.5
+      ],
+      "static_goal_collisions": [
+        "car_S3_-1",
+        "car_S3_1"
+      ],
+      "static_goal_fits": false
+    },
+    {
+      "id": "S4",
+      "name": "Only a steep parking angle fits",
+      "kind": "orientation_failure",
+      "expected": "REJECT",
+      "reason": "The diagonal pose is collision-free but 35 degrees from perpendicular; the permitted error is at most 10 degrees.",
+      "goal_pose_m_deg": [
+        0.0,
+        -13.0,
+        90.0
+      ],
+      "spawn_pose_m_deg": [
+        -7.0,
+        -7.4,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        -4.4,
+        -17.395,
+        4.4,
+        -9.0
+      ],
+      "static_goal_collisions": [
+        "car_S4_-1",
+        "car_S4_1"
+      ],
+      "static_goal_fits": false,
+      "diagonal_pose_m_deg": [
+        0.0,
+        -13.0,
+        55.0
+      ],
+      "diagonal_pose_fits": true,
+      "diagonal_heading_error_deg": 35.0
+    },
+    {
+      "id": "S5",
+      "name": "No room for reverse entry",
+      "kind": "approach_blocked",
+      "expected": "REJECT",
+      "reason": "Final 3.40 m wide pocket fits, but opposing cars leave a 1.75 m approach throat; the vehicle cannot enter it.",
+      "opening_width_m": 3.4,
+      "approach_throat_m": 1.75,
+      "goal_pose_m_deg": [
+        14.0,
+        -14.6,
+        90.0
+      ],
+      "spawn_pose_m_deg": [
+        14.0,
+        -7.5,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        12.3,
+        -17.395,
+        15.7,
+        -11.5
+      ],
+      "static_goal_collisions": [],
+      "static_goal_fits": true
+    },
+    {
+      "id": "S6",
+      "name": "Large clear perpendicular reverse park",
+      "kind": "clear_reverse",
+      "expected": "ACCEPT",
+      "reason": "8.00 m clear opening, a collision-free reverse arc, and a final pose perpendicular to the curb.",
+      "opening_width_m": 8.0,
+      "goal_pose_m_deg": [
+        14.0,
+        14.6,
+        -90.0
+      ],
+      "spawn_pose_m_deg": [
+        20.875,
+        10.475,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        10.0,
+        11.5,
+        18.0,
+        17.395
+      ],
+      "static_goal_collisions": [],
+      "static_goal_fits": true,
+      "reference_path_static_clear": true,
+      "reference_path_collision_samples": [],
+      "reference_path_csv": "reference_paths/S6_reverse.csv"
+    }
+  ]
+}

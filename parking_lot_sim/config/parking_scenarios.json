@@ -1,0 +1,198 @@
+{
+  "purpose": "Evaluation/reference data ONLY. Do not feed case labels or goals to navigation.",
+  "scale": 1.0,
+  "layout": "six_controlled_cases",
+  "immediately_accepted_case": "S6",
+  "immediately_accepted_cases": [
+    "S6"
+  ],
+  "dynamic_caveat": "S2 becomes eligible after its pedestrian clears the actual planned swept path.",
+  "robot_footprint_m": [
+    4.62,
+    2.12
+  ],
+  "wheelbase_m": 2.75,
+  "safety_margin_m": 0.15,
+  "maximum_heading_error_deg": 10.0,
+  "reverse_reference_radius_m": 5.5,
+  "cases": [
+    {
+      "id": "S1",
+      "name": "Inward-angled cars",
+      "kind": "tapered_gap",
+      "expected": "REJECT",
+      "reason": "Wide entrance, but inward-pointing cars obstruct the perpendicular final footprint.",
+      "goal_pose_m_deg": [
+        -14.0,
+        14.6,
+        -90.0
+      ],
+      "spawn_pose_m_deg": [
+        -7.125,
+        10.475,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        -18.4,
+        11.5,
+        -9.6,
+        17.395
+      ],
+      "static_goal_collisions": [
+        "car_S1_left",
+        "car_S1_right"
+      ],
+      "static_goal_fits": false
+    },
+    {
+      "id": "S2",
+      "name": "Usable space, pedestrian crossing",
+      "kind": "pedestrian_block",
+      "expected": "WAIT_WHILE_BLOCKED",
+      "reason": "Static goal and reverse path fit; a walking person initially occupies the swept path. Reassess after they clear it.",
+      "goal_pose_m_deg": [
+        0.0,
+        14.6,
+        -90.0
+      ],
+      "spawn_pose_m_deg": [
+        6.875,
+        10.475,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        -3.6,
+        11.5,
+        3.6,
+        17.395
+      ],
+      "static_goal_collisions": [],
+      "static_goal_fits": true,
+      "reference_path_static_clear": true,
+      "reference_path_collision_samples": [],
+      "reference_path_csv": "reference_paths/S2_reverse.csv",
+      "pedestrian_intersects_reference_path_at_start": true,
+      "blocking_pedestrian": "pedestrian_S2_blocker"
+    },
+    {
+      "id": "S3",
+      "name": "Too narrow",
+      "kind": "narrow_gap",
+      "expected": "REJECT",
+      "reason": "1.70 m opening is narrower than the 2.12 m vehicle, even before safety margins.",
+      "opening_width_m": 1.7,
+      "goal_pose_m_deg": [
+        -14.0,
+        -14.6,
+        90.0
+      ],
+      "spawn_pose_m_deg": [
+        -7.125,
+        -10.475,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        -14.85,
+        -17.395,
+        -13.15,
+        -11.5
+      ],
+      "static_goal_collisions": [
+        "car_S3_-1",
+        "car_S3_1"
+      ],
+      "static_goal_fits": false
+    },
+    {
+      "id": "S4",
+      "name": "Only a steep parking angle fits",
+      "kind": "orientation_failure",
+      "expected": "REJECT",
+      "reason": "The diagonal pose is collision-free but 35 degrees from perpendicular; the permitted error is at most 10 degrees.",
+      "goal_pose_m_deg": [
+        0.0,
+        -13.0,
+        90.0
+      ],
+      "spawn_pose_m_deg": [
+        -7.0,
+        -7.4,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        -4.4,
+        -17.395,
+        4.4,
+        -9.0
+      ],
+      "static_goal_collisions": [
+        "car_S4_-1",
+        "car_S4_1"
+      ],
+      "static_goal_fits": false,
+      "diagonal_pose_m_deg": [
+        0.0,
+        -13.0,
+        55.0
+      ],
+      "diagonal_pose_fits": true,
+      "diagonal_heading_error_deg": 35.0
+    },
+    {
+      "id": "S5",
+      "name": "No room for reverse entry",
+      "kind": "approach_blocked",
+      "expected": "REJECT",
+      "reason": "Final 3.40 m wide pocket fits, but opposing cars leave a 1.75 m approach throat; the vehicle cannot enter it.",
+      "opening_width_m": 3.4,
+      "approach_throat_m": 1.75,
+      "goal_pose_m_deg": [
+        14.0,
+        -14.6,
+        90.0
+      ],
+      "spawn_pose_m_deg": [
+        14.0,
+        -7.5,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        12.3,
+        -17.395,
+        15.7,
+        -11.5
+      ],
+      "static_goal_collisions": [],
+      "static_goal_fits": true
+    },
+    {
+      "id": "S6",
+      "name": "Large clear perpendicular reverse park",
+      "kind": "clear_reverse",
+      "expected": "ACCEPT",
+      "reason": "8.00 m clear opening, a collision-free reverse arc, and a final pose perpendicular to the curb.",
+      "opening_width_m": 8.0,
+      "goal_pose_m_deg": [
+        14.0,
+        14.6,
+        -90.0
+      ],
+      "spawn_pose_m_deg": [
+        20.875,
+        10.475,
+        0.0
+      ],
+      "target_zone_xyxy_m": [
+        10.0,
+        11.5,
+        18.0,
+        17.395
+      ],
+      "static_goal_collisions": [],
+      "static_goal_fits": true,
+      "reference_path_static_clear": true,
+      "reference_path_collision_samples": [],
+      "reference_path_csv": "reference_paths/S6_reverse.csv"
+    }
+  ]
+}
