@@ -1,0 +1,255 @@
+{
+  "kind": "offline 2D ray-cast sensor and acceleration/steering-limited bicycle simulation; not Gazebo",
+  "seed": 2,
+  "initial_yaw_offset_rad": 0.0,
+  "status": "COMPLETED",
+  "error": null,
+  "simulated_time_s": 587.2,
+  "wall_time_s": 20.583,
+  "laps": 2,
+  "contacts": [],
+  "minimum_true_clearance_m": 0.5197769505455521,
+  "clearance_sample_period_s": 0.25,
+  "final_true_pose": [
+    -16.014043898372055,
+    13.716722156599515,
+    10.976687062425878
+  ],
+  "final_estimated_pose": [
+    -16.060242771513245,
+    13.670097103402139,
+    10.97822114864149
+  ],
+  "goal_pose": [
+    -16.049999999999997,
+    13.74999999999999,
+    -1.5707963267948966
+  ],
+  "decisions": [
+    {
+      "candidate_id": "P01",
+      "detected_pose": [
+        -16.049999999999997,
+        -14.549999999999985,
+        1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 3.6,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        -16.049999999999997,
+        -14.549999999999985,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.92105,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 0.697
+    },
+    {
+      "candidate_id": "P02",
+      "detected_pose": [
+        -0.09999999999999432,
+        -14.149999999999988,
+        1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 5.4,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        -0.09999999999999432,
+        -14.149999999999988,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.99915,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 0.911
+    },
+    {
+      "candidate_id": "P03",
+      "detected_pose": [
+        13.900000000000006,
+        -14.799999999999986,
+        1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 1.7000000000000002,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "INSUFFICIENT_WIDTH",
+      "goal_pose": [
+        13.900000000000006,
+        -14.799999999999986,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.74024,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 2.888
+    },
+    {
+      "candidate_id": "P04",
+      "detected_pose": [
+        13.75,
+        14.699999999999985,
+        -1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 3.9000000000000004,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        13.75,
+        14.699999999999985,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 0.95501,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 2.779
+    },
+    {
+      "candidate_id": "P05",
+      "detected_pose": [
+        -0.04999999999999716,
+        14.599999999999985,
+        -1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 3.3000000000000003,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "NO_VALIDATED_MANOEUVRE",
+      "goal_pose": [
+        0.10000000000000284,
+        15.66999999999999,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "SEARCH_NODE_BUDGET",
+      "assessment_ms": 444.603
+    },
+    {
+      "candidate_id": "P06",
+      "detected_pose": [
+        -16.049999999999997,
+        13.74999999999999,
+        -1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 6.9,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": true,
+      "dynamic_guard_clear": true,
+      "decision": "ACCEPT",
+      "reason": "OBSERVED_FOOTPRINT_AND_REVERSE_PATH_CLEAR",
+      "goal_pose": [
+        -16.049999999999997,
+        13.74999999999999,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "VALIDATED_REVERSE_HISTORY_AND_ANALYTIC_ARC",
+      "path_length_m": 35.794208592778254,
+      "assessment_ms": 53.104
+    }
+  ],
+  "events": [
+    {
+      "event": "mission_started",
+      "time_s": 2.0
+    },
+    {
+      "event": "lap_complete",
+      "time_s": 240.65,
+      "lap": 1
+    },
+    {
+      "event": "lap_complete",
+      "time_s": 456.1,
+      "lap": 2
+    },
+    {
+      "event": "mapping_complete",
+      "time_s": 456.1,
+      "scans": 2281
+    },
+    {
+      "event": "candidate_decision",
+      "time_s": 457.6,
+      "candidate": "P01",
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION"
+    },
+    {
+      "event": "candidate_decision",
+      "time_s": 457.6,
+      "candidate": "P02",
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION"
+    },
+    {
+      "event": "candidate_decision",
+      "time_s": 457.6,
+      "candidate": "P03",
+      "decision": "REJECT",
+      "reason": "INSUFFICIENT_WIDTH"
+    },
+    {
+      "event": "candidate_decision",
+      "time_s": 457.6,
+      "candidate": "P04",
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION"
+    },
+    {
+      "event": "candidate_decision",
+      "time_s": 457.6,
+      "candidate": "P05",
+      "decision": "REJECT",
+      "reason": "NO_VALIDATED_MANOEUVRE"
+    },
+    {
+      "event": "candidate_decision",
+      "time_s": 457.6,
+      "candidate": "P06",
+      "decision": "ACCEPT",
+      "reason": "OBSERVED_FOOTPRINT_AND_REVERSE_PATH_CLEAR"
+    },
+    {
+      "event": "reverse_parking_started",
+      "time_s": 457.6,
+      "candidate": "P06",
+      "samples": 672
+    },
+    {
+      "event": "parking_target_reached",
+      "time_s": 585.2
+    },
+    {
+      "event": "parked_and_held",
+      "time_s": 587.2
+    }
+  ],
+  "dynamic_track_samples": 434,
+  "map_revision": 2937,
+  "scan_processing_mean_ms": 4.199152183180513,
+  "scan_processing_p95_ms": 7.734638400052063,
+  "simulator_truth_used_for_control": false,
+  "position_error_m": 0.04899240865343761,
+  "heading_error_deg": 1.0821582871435989,
+  "slam_position_rmse_m": 0.08291850793751082,
+  "odometry_position_rmse_m": 0.036281179325932354
+}

@@ -101,12 +101,12 @@ def add_layout_obstacles(builder):
 
 def people_routes():
     return [
-        {"name":"pedestrian_1","start":[-18,18.3],"end":[-7,18.3],"ground_z_m":0.12,"speed":0.9,"delay":0,"shirt":"blue"},
-        {"name":"pedestrian_2","start":[-5,18.3],"end":[6,18.3],"ground_z_m":0.12,"speed":0.9,"delay":1,"shirt":"orange"},
-        {"name":"pedestrian_3","start":[8,18.3],"end":[19,18.3],"ground_z_m":0.12,"speed":0.8,"delay":2,"shirt":"green"},
-        {"name":"pedestrian_4","start":[-17,-18.3],"end":[-3,-18.3],"ground_z_m":0.12,"speed":0.9,"delay":0,"shirt":"orange"},
-        {"name":"pedestrian_5","start":[1,-18.3],"end":[17,-18.3],"ground_z_m":0.12,"speed":1.0,"delay":2,"shirt":"blue"},
-        {"name":"pedestrian_S2_blocker","start":[2.5,11.2],"end":[-3.5,11.2],"speed":0.8,"delay":0,"shirt":"green"},
+        {"name":"pedestrian_1","start":[-18,18.3],"end":[-7,18.3],"ground_z_m":0.12,"speed":1.2,"delay":0,"shirt":"blue"},
+        {"name":"pedestrian_2","start":[-5,18.3],"end":[6,18.3],"ground_z_m":0.12,"speed":1.2,"delay":1,"shirt":"orange"},
+        {"name":"pedestrian_3","start":[8,18.3],"end":[19,18.3],"ground_z_m":0.12,"speed":1.1,"delay":2,"shirt":"green"},
+        {"name":"pedestrian_4","start":[-17,-18.3],"end":[-3,-18.3],"ground_z_m":0.12,"speed":1.2,"delay":0,"shirt":"orange"},
+        {"name":"pedestrian_5","start":[1,-18.3],"end":[17,-18.3],"ground_z_m":0.12,"speed":1.3,"delay":2,"shirt":"blue"},
+        {"name":"pedestrian_S2_blocker","start":[2.5,11.2],"end":[-3.5,11.2],"speed":1.1,"delay":0,"shirt":"green"},
     ]
 
 

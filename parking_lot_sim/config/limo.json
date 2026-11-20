@@ -1,0 +1,34 @@
+{
+  "name": "parking_robot",
+  "platform": "AgileX LIMO",
+  "source": "agilexrobotics/limo_ros2, humble, limo_car",
+  "adaptation": "Official meshes; uniformly enlarged model and project Harmonic interfaces",
+  "drive": "four powered wheels, front Ackermann steering",
+  "footprint_size_m": [
+    2.998703408271198,
+    2.12
+  ],
+  "footprint_center_offset_m": [
+    -0.021205108698454066,
+    0.0
+  ],
+  "steered_envelope_width_m": 2.560013932921754,
+  "wheelbase_m": 1.8651692055989213,
+  "track_m": 1.305618443919245,
+  "navigation_reference_frame": "rear_axle",
+  "rear_axle_offset_m": [
+    -0.9325846027994606,
+    0.0,
+    0.0
+  ],
+  "wheel_radius_m": 0.44899015252245217,
+  "steering_limit_rad": 0.45,
+  "uniform_scale_from_official_xacro": 7.771538356662172,
+  "sensors": [
+    "360 degree GPU LiDAR",
+    "Front and rear near-ground LiDAR",
+    "RGB camera",
+    "IMU",
+    "chassis contacts"
+  ]
+}

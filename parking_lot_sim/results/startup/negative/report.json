@@ -1,0 +1,53 @@
+{
+  "kind": "offline 2D ray-cast sensor and acceleration/steering-limited bicycle simulation; not Gazebo",
+  "seed": 0,
+  "initial_yaw_offset_rad": -0.1,
+  "status": "OBSERVED",
+  "error": null,
+  "simulated_time_s": 456.55,
+  "wall_time_s": 14.209,
+  "laps": 2,
+  "contacts": [],
+  "minimum_true_clearance_m": 0.6199021399550912,
+  "clearance_sample_period_s": 0.25,
+  "final_true_pose": [
+    -19.993616849111604,
+    -9.036660884327386,
+    12.579288266878146
+  ],
+  "final_estimated_pose": [
+    -20.04395179444557,
+    -8.992909459908791,
+    12.5774525096497
+  ],
+  "goal_pose": null,
+  "decisions": [],
+  "events": [
+    {
+      "event": "mission_started",
+      "time_s": 2.0
+    },
+    {
+      "event": "lap_complete",
+      "time_s": 240.95,
+      "lap": 1
+    },
+    {
+      "event": "lap_complete",
+      "time_s": 456.5,
+      "lap": 2
+    },
+    {
+      "event": "mapping_complete",
+      "time_s": 456.5,
+      "scans": 2283
+    }
+  ],
+  "dynamic_track_samples": 452,
+  "map_revision": 2283,
+  "scan_processing_mean_ms": 3.616299777923283,
+  "scan_processing_p95_ms": 7.682699900055923,
+  "simulator_truth_used_for_control": false,
+  "slam_position_rmse_m": 0.09133999251203577,
+  "odometry_position_rmse_m": 0.04169309465912389
+}

@@ -27,7 +27,13 @@ def inspect_xml(path, truth):
     check(root.tag == "sdf" and root.get("version") == "1.9", "Wrong SDF root/version")
     world = root.find("world")
     check(world is not None and world.get("name") == "parking_lot", "Missing world")
-    check(not root.findall(".//include") and not root.findall(".//uri"), "External assets found")
+    check(not root.findall(".//include"), "Unexpected external model include")
+    for uri in root.findall(".//uri"):
+        value = uri.text or ""
+        check(value.startswith("model://limo/meshes/"), "Unexpected mesh resource")
+        resource = path.parents[1] / "models" / value.removeprefix("model://")
+        check(resource.resolve().is_relative_to((path.parents[1]/"models/limo").resolve())
+              and resource.is_file(), "Missing local LIMO resource")
     names = [m.get("name") for m in world.findall("model")]
     check(len(names) == len(set(names)), "Duplicate model names")
     plugins = {p.get("name") for p in world.findall("plugin")}
@@ -92,17 +98,23 @@ def validate_robot(root, world, truth):
         name=drive.findtext(side+"_steering_joint")
         check(name in joints and name in urdf_joints,"Missing matching front steering joint")
         check(joints[name].findtext("axis/xyz")=="0 0 1","Steering axis must be vertical")
-    check(abs(float(drive.findtext("wheel_base"))-2.75*truth["scale"])<1e-6,"Unexpected wheelbase")
-    check(truth["robot"]["footprint_size_m"]==[4.62*truth["scale"],2.12*truth["scale"]],"Robot must match sedan footprint")
+    check(abs(float(drive.findtext("wheel_base"))-truth["robot"]["wheelbase_m"])<1e-6,"Unexpected wheelbase")
+    from scene_robot import FOOTPRINT_LENGTH, FOOTPRINT_WIDTH
+    check(all(abs(a-b)<1e-6 for a,b in zip(truth["robot"]["footprint_size_m"],
+          [FOOTPRINT_LENGTH*truth["scale"],FOOTPRINT_WIDTH*truth["scale"]])),"LIMO footprint metadata mismatch")
     for link in links.values():
         check(float(link.findtext("inertial/mass")) > 0, "Missing positive link mass")
         for diagonal in ("ixx", "iyy", "izz"):
             check(float(link.findtext("inertial/inertia/" + diagonal)) > 0, "Invalid link inertia")
     sensors = {sensor.get("type") for sensor in robot.findall(".//sensor")}
     check({"gpu_lidar", "camera", "imu", "contact"} <= sensors, "Missing robot sensors")
-    lidar = robot.find(".//sensor[@type='gpu_lidar']")
+    lidar = robot.find("link[@name='lidar_link']/sensor[@name='lidar']")
     check(int(lidar.findtext("lidar/scan/horizontal/samples")) == 720, "Unexpected lidar sample count")
     check(lidar.findtext("gz_frame_id") == "lidar_link", "Lidar TF frame mismatch")
+    for side in ("front", "rear"):
+        low = robot.find(f"link[@name='base_link']/sensor[@name='low_{side}']")
+        check(low is not None and low.findtext("gz_frame_id") == f"low_{side}_link",
+              f"Missing {side} low lidar or matching TF frame")
     check(robot.find(".//sensor[@type='camera']").findtext("gz_frame_id") == "camera_optical_frame", "Camera TF mismatch")
     expected_links = {"base_footprint", "base_link", "lidar_link", "camera_link", "camera_optical_frame", "imu_link"}
     check(expected_links <= {link.get("name") for link in urdf.findall("link")}, "Missing TF frames")
@@ -199,12 +211,21 @@ def validate(root, strict_bays=False):
         check(not overlaps(a, b), f"Insufficient car clearance: {a_name}, {b_name}")
     validate_robot(root, primary, truth)
     validate_people(root, primary, truth, polygons)
-    spawn = truth["suggested_robot_spawn"]["position_m"]
-    # Verify a 4.8 x 2.2 m car-sized footprint fits at the suggested start.
-    robot = rectangle(spawn, 4.8 * scale, 2.2 * scale, 0)
-    check(all(not overlaps(robot, p) for _, p in polygons), "Suggested robot start overlaps a car")
-    check(all(-23.99 * scale < x < 23.99 * scale and -12.19 * scale < y < -5.81 * scale
-              for x, y in robot), "Suggested robot start is outside the clear approach")
+    if truth["robot"] is not None:
+        spawn = truth["suggested_robot_spawn"]["position_m"]
+        # Check the actual LIMO envelope, including the projecting entrance road.
+        metadata = truth["robot"]
+        heading = truth["suggested_robot_spawn"]["yaw_rad"]
+        offset = metadata["footprint_center_offset_m"][0]
+        robot = rectangle((spawn[0]+offset*math.cos(heading), spawn[1]+offset*math.sin(heading)),
+                          metadata["footprint_size_m"][0]+0.24*scale,
+                          metadata["steered_envelope_width_m"]+0.24*scale, heading)
+        check(all(not overlaps(robot, p) for _, p in polygons), "Suggested robot start overlaps a car")
+        check(all(((-23.99*scale < x < 23.99*scale) or (-35.99*scale < x <= -23.99*scale))
+                  and -12.19*scale < y < -5.81*scale for x, y in robot),
+              "Suggested robot start is outside the clear entrance approach")
+        actual = [float(v) for v in primary.find("model[@name='parking_robot']").findtext("pose").split()]
+        check(all(abs(actual[i]-spawn[i]) < 1e-6 for i in range(3)), "Robot start differs from metadata")
     if strict_bays:
         check(not departures, f"Cars outside their own bays: {departures}")
     print(f"PASS: 2 identical unmarked XML world aliases; {truth['parked_car_count']} static cars; "

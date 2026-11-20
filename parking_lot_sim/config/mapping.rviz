@@ -1,0 +1,124 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: map
+    Frame Rate: 20
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Metre grid
+      Enabled: true
+      Cell Size: 1
+      Plane Cell Count: 100
+      Color: 95; 95; 95
+      Alpha: 0.3
+      Reference Frame: <Fixed Frame>
+      Plane: XY
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Sensor-built map
+      Enabled: true
+      Alpha: 1
+      Topic:
+        Value: /map_preview
+        Depth: 1
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Queue Size: 2
+      Style: Points
+      Size (Pixels): 3
+      Size (m): 0.1
+      Color Transformer: RGB8
+      Position Transformer: XYZ
+      Decay Time: 0
+    - Class: rviz_default_plugins/Map
+      Name: Native map texture (optional)
+      Enabled: false
+      Alpha: 0.9
+      Color Scheme: map
+      Draw Behind: false
+      Topic:
+        Value: /map
+        Depth: 1
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Use Timestamp: false
+    - Class: rviz_default_plugins/LaserScan
+      Name: Live laser returns
+      Enabled: true
+      Topic:
+        Value: /scan
+        Depth: 5
+        History Policy: Keep Last
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+      Queue Size: 10
+      Style: Points
+      Size (Pixels): 3
+      Size (m): 0.04
+      Alpha: 1
+      Color Transformer: FlatColor
+      Color: 255; 55; 45
+      Position Transformer: XYZ
+      Decay Time: 0
+    - Class: rviz_default_plugins/Path
+      Name: Current parking or survey path
+      Enabled: true
+      Topic:
+        Value: /parking/active_path
+        Depth: 1
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Color: 40; 210; 240
+      Alpha: 0.85
+      Line Style: Lines
+      Line Width: 0.08
+      Buffer Length: 1
+      Pose Style: None
+    - Class: rviz_default_plugins/Path
+      Name: Current obstacle-aware plan
+      Enabled: true
+      Topic:
+        Value: /plan
+        Depth: 1
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+      Color: 35; 240; 80
+      Alpha: 1
+      Line Style: Lines
+      Line Width: 0.1
+      Buffer Length: 1
+      Pose Style: None
+    - Class: rviz_default_plugins/Axes
+      Name: LIMO position and heading
+      Enabled: true
+      Reference Frame: base_footprint
+      Length: 1
+      Radius: 0.05
+      Show Trail: false
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Parking map
+      Target Frame: map
+      Angle: 0
+      Scale: 12
+      X: 10
+      Y: 0
+  Enabled: true
+Window Geometry:
+  Height: 850
+  Width: 1250

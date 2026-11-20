@@ -9,11 +9,28 @@ import json
 import math
 from pathlib import Path
 import scene_scenarios as suite
+from scene_geometry import overlaps, rectangle
 
 ROOT=Path(__file__).resolve().parents[1]
 
 
 def evaluate(root,case_id,x,y,yaw,pedestrian_clear=False):
+    truth=json.loads((root/'config/scene_ground_truth.json').read_text())
+    robot=truth["robot"]
+    if robot and robot.get("platform")=="AgileX LIMO":
+        case = next(item for item in truth["scenarios"] if item["id"] == case_id)
+        length, width = robot["footprint_size_m"]
+        footprint = rectangle((x, y), length, width, math.radians(yaw))
+        x0, y0, x1, y1 = case["target_zone_xyxy_m"]
+        fits_zone = all(x0 <= px <= x1 and y0 <= py <= y1 for px, py in footprint)
+        heading_error = abs((yaw-case["goal_pose_m_deg"][2]+180)%360-180)
+        static = suite.obstacle_polygons([bay for bay in truth["bays"] if bay["occupied"]])
+        contacts = [name for name, obstacle in static if overlaps(footprint, obstacle)]
+        return {"case": case_id, "inside_reference_zone": fits_zone,
+                "heading_error_deg": heading_error, "static_footprint_overlaps": contacts,
+                "accepted_final_pose": fits_zone and heading_error <= 10 and not contacts,
+                "source": "current LIMO geometry; x and y locate the body rectangle center",
+                "sweep_outcome": "evaluate the recorded motion with evaluate_run.py"}
     config=json.loads((root/'config/parking_lot.json').read_text())
     manifest=json.loads((root/'config/parking_scenarios.json').read_text())
     case=next(c for c in manifest['cases'] if c['id']==case_id)

@@ -1,0 +1,22 @@
+{
+  "status": "parked",
+  "reason": "Parking bay, perpendicular reverse entry and standstill verified.",
+  "sim_s": 283.3,
+  "first_lap_completed": true,
+  "inspections": {
+    "white": "bypass",
+    "blue": "mouth_too_narrow",
+    "red": "moving_obstacle_in_mouth",
+    "yellow": "entry_sweep_blocked_or_unobserved",
+    "green": "parked"
+  },
+  "course_rejoins": 0,
+  "estimated_position_error_m": 0.09416522382002118,
+  "estimated_heading_error_deg": 0.6350373773914815,
+  "observed_free_fraction": 1.0,
+  "target_odom": [
+    14.95822320468667,
+    22.25776443289505,
+    -1.43049300675565
+  ]
+}

@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-set -euo pipefail
-parking_package_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-if ! command -v gz >/dev/null 2>&1; then
-  printf '%s\n' 'Source /opt/ros/jazzy/setup.bash first, and install ros-jazzy-ros-gz if needed.' >&2
-  exit 1
+set -eo pipefail
+if [[ -r /opt/ros/jazzy/setup.bash ]]; then
+  source /opt/ros/jazzy/setup.bash
 fi
+set -u
+parking_package_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+python3 "${parking_package_dir}/scripts/check_runtime.py" --scene
 export GZ_SIM_RESOURCE_PATH="${parking_package_dir}/models:${GZ_SIM_RESOURCE_PATH:-}"
 parking_world_file="${parking_package_dir}/worlds/parking_lot.sdf"
 if [[ "${1:-}" =~ ^[Ss][1-6]$ ]]; then

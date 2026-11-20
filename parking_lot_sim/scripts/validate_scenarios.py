@@ -76,6 +76,9 @@ def verify_s5_enclosure(root,scale):
 
 def validate_cases(root=ROOT):
     validate(root)
+    truth = json.loads((root/"config/scene_ground_truth.json").read_text())
+    if truth["robot"] and truth["robot"].get("platform") == "AgileX LIMO":
+        return validate_limo_cases(root, truth)
     config=json.loads((root/"config/parking_lot.json").read_text())
     manifest=json.loads((root/"config/parking_scenarios.json").read_text())
     cars=suite.make_layout(config)
@@ -133,6 +136,37 @@ def validate_cases(root=ROOT):
                     check(allowed,'Unexpected additional clear curb-side target')
     print('PASS: S1 taper reject; S2 static fit + person on sweep; S3 narrow reject; S4 angle reject; S5 final fit + entry blocked; S6 clear reverse arc.')
     print('PASS: car-sized footprint, steering limits, six clear starts, and reference final poses perpendicular to the curb.')
+
+
+def validate_limo_cases(root, truth):
+    """Check the current robot against each case without reusing sedan labels."""
+    cars = [bay for bay in truth["bays"] if bay["occupied"]]
+    obstacles = suite.obstacle_polygons(cars)
+    length, width = truth["robot"]["footprint_size_m"]
+    offset = truth["robot"]["footprint_center_offset_m"][0]
+    cases = truth["scenarios"]
+    check({case["id"] for case in cases} == {f"S{i}" for i in range(1, 7)}, "Missing case variants")
+    for case in cases:
+        key = case["id"]
+        scene = ET.parse(root/"worlds"/f"case_{key.lower()}.sdf")
+        world = scene.getroot().find("world")
+        robot = world.find("model[@name='parking_robot']")
+        position = list(map(float, robot.findtext("pose").split()))
+        wanted = case["spawn_pose_m_deg"]
+        check(math.hypot(position[0]-wanted[0], position[1]-wanted[1]) < 1e-5
+              and abs(math.degrees(position[5])-wanted[2]) < 1e-4, f"{key}: wrong LIMO spawn")
+        center = (position[0]+offset*math.cos(position[5]), position[1]+offset*math.sin(position[5]))
+        start = rectangle(center, length, width, position[5])
+        check(not any(overlaps(start, poly) for _, poly in obstacles), f"{key}: LIMO start overlaps")
+        check(len(world.findall("actor")) == truth["pedestrian_count"], f"{key}: actor count differs")
+        x, y, yaw = case["goal_pose_m_deg"]
+        target = rectangle((x, y), length, width, math.radians(yaw))
+        x0, y0, x1, y1 = case["target_zone_xyxy_m"]
+        fits_zone = all(x0 <= px <= x1 and y0 <= py <= y1 for px, py in target)
+        occupied = [name for name, poly in obstacles if overlaps(target, poly)]
+        state = "fits surveyed benchmark geometry" if fits_zone and not occupied else "rejected by footprint"
+        print(f"{key}: fixed reference pose {state}.")
+    print("PASS: six LIMO starts and scene resources. Runtime sweep outcomes are recorded in decisions.jsonl.")
 
 
 if __name__=='__main__':

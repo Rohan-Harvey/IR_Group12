@@ -1,0 +1,40 @@
+[
+  {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "passed": true,
+    "output": "test_all_parked_vehicles_match_limo_dimensions (test_system.SystemTests.test_all_parked_vehicles_match_limo_dimensions) ... ok\ntest_bay_order_and_two_closed_ccw_laps (test_system.SystemTests.test_bay_order_and_two_closed_ccw_laps) ... ok\ntest_candidates_follow_measured_map_translation (test_system.SystemTests.test_candidates_follow_measured_map_translation) ... ok\ntest_clearance_includes_long_obstacles_with_distant_centres (test_system.SystemTests.test_clearance_includes_long_obstacles_with_distant_centres) ... ok\ntest_encoder_imu_closed_circle (test_system.SystemTests.test_encoder_imu_closed_circle) ... ok\ntest_first_imu_heading_preserves_settling_rotation (test_system.SystemTests.test_first_imu_heading_preserves_settling_rotation) ... ok\ntest_hybrid_fallback_finds_reverse_straight_path (test_system.SystemTests.test_hybrid_fallback_finds_reverse_straight_path) ... ok\ntest_imu_reference_unwrap_keeps_initial_heading (test_system.SystemTests.test_imu_reference_unwrap_keeps_initial_heading) ... ok\ntest_inverse_sensor_update_unknown_and_no_returns (test_system.SystemTests.test_inverse_sensor_update_unknown_and_no_returns) ... ok\ntest_laser_range_matches_the_offline_runner (test_system.SystemTests.test_laser_range_matches_the_offline_runner) ... ok\ntest_moving_occupancy_does_not_require_scenario_labels (test_system.SystemTests.test_moving_occupancy_does_not_require_scenario_labels) ... ok\ntest_obstacle_stops_are_reported_by_the_supervisor (test_system.SystemTests.test_obstacle_stops_are_reported_by_the_supervisor) ... ok\ntest_reverse_arcs_are_steering_limited_and_reach_goal (test_system.SystemTests.test_reverse_arcs_are_steering_limited_and_reach_goal) ... ok\ntest_runtime_does_not_read_reference_labels_or_poses (test_system.SystemTests.test_runtime_does_not_read_reference_labels_or_poses) ... ok\ntest_s5_independent_geometric_enclosure (test_system.SystemTests.test_s5_independent_geometric_enclosure) ... ok\ntest_scan_matching_keeps_the_imu_yaw_reference (test_system.SystemTests.test_scan_matching_keeps_the_imu_yaw_reference) ... ok\ntest_sensor_guard_stops_and_resumes_forward_and_reverse (test_system.SystemTests.test_sensor_guard_stops_and_resumes_forward_and_reverse) ... ok\ntest_stale_invalid_and_reset_streams (test_system.SystemTests.test_stale_invalid_and_reset_streams) ... ok\ntest_swept_check_detects_between_endpoints (test_system.SystemTests.test_swept_check_detects_between_endpoints) ... ok\ntest_time_aligned_pose_interpolation (test_system.SystemTests.test_time_aligned_pose_interpolation) ... ok\ntest_unseen_footprint_is_rejected (test_system.SystemTests.test_unseen_footprint_is_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 0.165s\n\nOK\n"
+  },
+  {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "scripts/validate_package.py"
+    ],
+    "passed": true,
+    "output": "PASS: source syntax, LIMO scale, local assets, three worlds, sensor budgets, bridge contracts, dependency declarations and evaluation separation.\nROS/Gazebo/colcon/CMake live build and physical execution are not available in this workspace.\n"
+  },
+  {
+    "command": [
+      "bash",
+      "-n",
+      "run.sh"
+    ],
+    "passed": true,
+    "output": ""
+  },
+  {
+    "kind": "offline_integration",
+    "runtime_version": "1.0.1",
+    "passed": true,
+    "trials": 5,
+    "startup_rotation_regressions": 2,
+    "live_ros_gazebo_verified": false
+  }
+]

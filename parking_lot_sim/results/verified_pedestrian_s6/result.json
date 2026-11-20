@@ -1,0 +1,13 @@
+{
+  "status": "parked",
+  "reason": "Perpendicular reverse-in finished and standstill verified.",
+  "sim_s": 81.4,
+  "estimated_position_error_m": 0.11720911551811046,
+  "estimated_heading_error_deg": 1.0974458111897663,
+  "observed_free_fraction": 1.0,
+  "target_odom": [
+    -4.593880636906305,
+    4.914565298541127,
+    -1.6000917554754823
+  ]
+}

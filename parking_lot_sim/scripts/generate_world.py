@@ -14,7 +14,7 @@ import random
 import xml.etree.ElementTree as ET
 
 from scene_geometry import overlaps, rectangle
-from scene_robot import add_robot, write_urdf
+from scene_robot import add_robot, write_urdf, write_limo_assets, robot_metadata
 from scene_people import ROUTES, add_people, write_people_assets
 import scene_scenarios as scenarios
 
@@ -120,6 +120,9 @@ class Builder:
             properties = add(plugin, "gz-gui")
             add(properties, "property", "false", key="showTitleBar", type="bool")
             add(properties, "property", "floating", key="state", type="string")
+            add(properties, "property", "false", key="resizable", type="bool")
+            add(properties, "property", 5, key="width", type="double")
+            add(properties, "property", 5, key="height", type="double")
         for filename, width, height, side in [
             ("WorldControl", 140, 72, "left"),
             ("WorldStats", 300, 110, "right"),
@@ -389,11 +392,7 @@ def ground_truth(config, bays,routes=None):
         "painted_markings": False,
         "random_angle_range_deg": config.get("random_angle_range_deg", 35.0),
         "minimum_car_clearance_m": config.get("minimum_car_clearance_m", 0.08) * scale,
-        "robot": ({"name": "parking_robot", "drive": "four powered wheels, front Ackermann steering",
-                   "footprint_size_m": [4.62 * scale, 2.12 * scale],
-                   "wheelbase_m":2.75*scale,"steering_limit_rad":0.55,
-                   "sensors": ["360 degree GPU LiDAR", "RGB camera", "IMU", "front contact bumper"],
-                   "wheel_radius_m": 0.32 * scale} if config.get("include_robot", True) else None),
+        "robot": (robot_metadata(scale) if config.get("include_robot", True) else None),
         "pedestrian_count": len(routes) if config.get("include_pedestrians", True) else 0,
         "pedestrians": [dict(route, start=[v * scale for v in route["start"]],
                              end=[v * scale for v in route["end"]], speed=route["speed"] * scale,
@@ -463,6 +462,7 @@ def generate(config, output_dir):
         add_robot(builder, config)
     add_people(builder, config.get("include_pedestrians", True),routes)
     write_people_assets(output_dir)
+    write_limo_assets(output_dir)
     write_urdf(output_dir / "urdf" / "parking_robot.urdf", config["scale"])
     ET.indent(builder.root, space="  ")
     # Keep both existing entry points; both now open the same unmarked world.

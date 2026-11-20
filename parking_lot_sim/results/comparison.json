@@ -1,0 +1,856 @@
+{
+  "kind": "Offline sensor/bicycle simulation only; not a live Gazebo or real-robot validation",
+  "trials": 5,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "completed_trials": 5,
+  "collision_trials": 0,
+  "two_lap_trials": 5,
+  "six_decision_trials": 5,
+  "correctly_ordered_trials": 5,
+  "endpoint_baseline_unsafe_accepts": 7,
+  "unsafe_reference_decisions": 25,
+  "static_rejection_reference_decisions": 20,
+  "endpoint_baseline_static_false_accepts": 5,
+  "manoeuvre_checker_static_false_accepts": 0,
+  "dynamic_rejection_reference_decisions": 5,
+  "dynamic_endpoint_baseline_accepts": 2,
+  "dynamic_guard_rejections": 2,
+  "proposed_unsafe_accepts": 0,
+  "proposed_unnecessary_rejections": 0,
+  "positive_reference_decisions": 5,
+  "position_error_m_max": 0.1380850385303894,
+  "heading_error_deg_max": 2.0740999151920123,
+  "minimum_clearance_m": 0.5148096715701858,
+  "scan_processing_ms_mean": 4.207576919898652,
+  "notes": [
+    "The endpoint baseline is frozen before manoeuvre and dynamic checks on the same map and candidate.",
+    "Dynamic rejection is recorded separately from geometric manoeuvre rejection.",
+    "A search-budget failure is not an independent proof of physical impossibility.",
+    "Geometric overlap is checked every 50 ms; physical Gazebo contacts are not measured."
+  ],
+  "decisions": [
+    {
+      "seed": 0,
+      "candidate_id": "P01",
+      "detected_pose": [
+        -16.049999999999997,
+        -14.399999999999988,
+        1.5707963267948966
+      ],
+      "map_revision": 2292,
+      "opening_width_m": 3.5,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        -16.049999999999997,
+        -14.399999999999988,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.90577,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 0.596,
+      "reference_case": "S1",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 0,
+      "candidate_id": "P02",
+      "detected_pose": [
+        -0.09999999999999432,
+        -13.999999999999988,
+        1.5707963267948966
+      ],
+      "map_revision": 2292,
+      "opening_width_m": 5.4,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        -0.09999999999999432,
+        -13.999999999999988,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.99915,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 0.793,
+      "reference_case": "S2",
+      "reference_expected": "REJECT_DYNAMIC",
+      "correct_decision": true
+    },
+    {
+      "seed": 0,
+      "candidate_id": "P03",
+      "detected_pose": [
+        13.950000000000003,
+        -14.699999999999985,
+        1.5707963267948966
+      ],
+      "map_revision": 2292,
+      "opening_width_m": 1.7000000000000002,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "INSUFFICIENT_WIDTH",
+      "goal_pose": [
+        13.950000000000003,
+        -14.699999999999985,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.74109,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 2.813,
+      "reference_case": "S3",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 0,
+      "candidate_id": "P04",
+      "detected_pose": [
+        13.75,
+        14.799999999999986,
+        -1.5707963267948966
+      ],
+      "map_revision": 2292,
+      "opening_width_m": 4.0,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        13.75,
+        14.799999999999986,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 0.95501,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 2.773,
+      "reference_case": "S4",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 0,
+      "candidate_id": "P05",
+      "detected_pose": [
+        -0.04999999999999716,
+        14.649999999999984,
+        -1.5707963267948966
+      ],
+      "map_revision": 2292,
+      "opening_width_m": 3.3000000000000003,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "NO_VALIDATED_MANOEUVRE",
+      "goal_pose": [
+        -0.04999999999999716,
+        15.769999999999987,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "SEARCH_NODE_BUDGET",
+      "assessment_ms": 642.7,
+      "reference_case": "S5",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 0,
+      "candidate_id": "P06",
+      "detected_pose": [
+        -16.049999999999997,
+        13.849999999999987,
+        -1.5707963267948966
+      ],
+      "map_revision": 2292,
+      "opening_width_m": 6.9,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": true,
+      "dynamic_guard_clear": true,
+      "decision": "ACCEPT",
+      "reason": "OBSERVED_FOOTPRINT_AND_REVERSE_PATH_CLEAR",
+      "goal_pose": [
+        -16.049999999999997,
+        13.849999999999987,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "VALIDATED_REVERSE_HISTORY_AND_ANALYTIC_ARC",
+      "path_length_m": 35.849373134013234,
+      "assessment_ms": 50.76,
+      "reference_case": "S6",
+      "reference_expected": "ACCEPT",
+      "correct_decision": true
+    },
+    {
+      "seed": 1,
+      "candidate_id": "P01",
+      "detected_pose": [
+        -16.049999999999997,
+        -14.549999999999985,
+        1.5707963267948966
+      ],
+      "map_revision": 2288,
+      "opening_width_m": 3.6,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        -16.049999999999997,
+        -14.549999999999985,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.91851,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 0.788,
+      "reference_case": "S1",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 1,
+      "candidate_id": "P02",
+      "detected_pose": [
+        -0.09999999999999432,
+        -14.099999999999987,
+        1.5707963267948966
+      ],
+      "map_revision": 2288,
+      "opening_width_m": 5.4,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": false,
+      "decision": "REJECT",
+      "reason": "DYNAMIC_OCCUPANCY_REASSESS_LATER",
+      "goal_pose": [
+        -0.09999999999999432,
+        -14.069999999999993,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "DEFERRED_UNTIL_FRESH_DYNAMIC_CLEARANCE",
+      "temporary_rejection": true,
+      "assessment_ms": 0.999,
+      "reference_case": "S2",
+      "reference_expected": "REJECT_DYNAMIC",
+      "correct_decision": true
+    },
+    {
+      "seed": 1,
+      "candidate_id": "P03",
+      "detected_pose": [
+        13.950000000000003,
+        -14.799999999999986,
+        1.5707963267948966
+      ],
+      "map_revision": 2288,
+      "opening_width_m": 1.7000000000000002,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "INSUFFICIENT_WIDTH",
+      "goal_pose": [
+        13.950000000000003,
+        -14.799999999999986,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.73939,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 2.999,
+      "reference_case": "S3",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 1,
+      "candidate_id": "P04",
+      "detected_pose": [
+        13.75,
+        14.699999999999985,
+        -1.5707963267948966
+      ],
+      "map_revision": 2288,
+      "opening_width_m": 4.0,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        13.75,
+        14.699999999999985,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 0.95671,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 3.387,
+      "reference_case": "S4",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 1,
+      "candidate_id": "P05",
+      "detected_pose": [
+        -0.04999999999999716,
+        14.599999999999985,
+        -1.5707963267948966
+      ],
+      "map_revision": 2288,
+      "opening_width_m": 3.3000000000000003,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "NO_VALIDATED_MANOEUVRE",
+      "goal_pose": [
+        -0.04999999999999716,
+        15.66999999999999,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "SEARCH_NODE_BUDGET",
+      "assessment_ms": 376.224,
+      "reference_case": "S5",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 1,
+      "candidate_id": "P06",
+      "detected_pose": [
+        -16.049999999999997,
+        13.74999999999999,
+        -1.5707963267948966
+      ],
+      "map_revision": 2288,
+      "opening_width_m": 6.9,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": true,
+      "dynamic_guard_clear": true,
+      "decision": "ACCEPT",
+      "reason": "OBSERVED_FOOTPRINT_AND_REVERSE_PATH_CLEAR",
+      "goal_pose": [
+        -16.049999999999997,
+        13.74999999999999,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "VALIDATED_REVERSE_HISTORY_AND_ANALYTIC_ARC",
+      "path_length_m": 35.778601880708855,
+      "assessment_ms": 52.975,
+      "reference_case": "S6",
+      "reference_expected": "ACCEPT",
+      "correct_decision": true
+    },
+    {
+      "seed": 2,
+      "candidate_id": "P01",
+      "detected_pose": [
+        -16.049999999999997,
+        -14.549999999999985,
+        1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 3.6,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        -16.049999999999997,
+        -14.549999999999985,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.92105,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 0.697,
+      "reference_case": "S1",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 2,
+      "candidate_id": "P02",
+      "detected_pose": [
+        -0.09999999999999432,
+        -14.149999999999988,
+        1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 5.4,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        -0.09999999999999432,
+        -14.149999999999988,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.99915,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 0.911,
+      "reference_case": "S2",
+      "reference_expected": "REJECT_DYNAMIC",
+      "correct_decision": true
+    },
+    {
+      "seed": 2,
+      "candidate_id": "P03",
+      "detected_pose": [
+        13.900000000000006,
+        -14.799999999999986,
+        1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 1.7000000000000002,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "INSUFFICIENT_WIDTH",
+      "goal_pose": [
+        13.900000000000006,
+        -14.799999999999986,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.74024,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 2.888,
+      "reference_case": "S3",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 2,
+      "candidate_id": "P04",
+      "detected_pose": [
+        13.75,
+        14.699999999999985,
+        -1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 3.9000000000000004,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        13.75,
+        14.699999999999985,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 0.95501,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 2.779,
+      "reference_case": "S4",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 2,
+      "candidate_id": "P05",
+      "detected_pose": [
+        -0.04999999999999716,
+        14.599999999999985,
+        -1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 3.3000000000000003,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "NO_VALIDATED_MANOEUVRE",
+      "goal_pose": [
+        0.10000000000000284,
+        15.66999999999999,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "SEARCH_NODE_BUDGET",
+      "assessment_ms": 444.603,
+      "reference_case": "S5",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 2,
+      "candidate_id": "P06",
+      "detected_pose": [
+        -16.049999999999997,
+        13.74999999999999,
+        -1.5707963267948966
+      ],
+      "map_revision": 2289,
+      "opening_width_m": 6.9,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": true,
+      "dynamic_guard_clear": true,
+      "decision": "ACCEPT",
+      "reason": "OBSERVED_FOOTPRINT_AND_REVERSE_PATH_CLEAR",
+      "goal_pose": [
+        -16.049999999999997,
+        13.74999999999999,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "VALIDATED_REVERSE_HISTORY_AND_ANALYTIC_ARC",
+      "path_length_m": 35.794208592778254,
+      "assessment_ms": 53.104,
+      "reference_case": "S6",
+      "reference_expected": "ACCEPT",
+      "correct_decision": true
+    },
+    {
+      "seed": 3,
+      "candidate_id": "P01",
+      "detected_pose": [
+        -16.074999999999996,
+        -14.449999999999985,
+        1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 3.6,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        -16.074999999999996,
+        -14.449999999999985,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.9202,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 0.705,
+      "reference_case": "S1",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 3,
+      "candidate_id": "P02",
+      "detected_pose": [
+        -0.09999999999999432,
+        -13.949999999999989,
+        1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 5.4,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        -0.09999999999999432,
+        -13.949999999999989,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.99915,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 0.658,
+      "reference_case": "S2",
+      "reference_expected": "REJECT_DYNAMIC",
+      "correct_decision": true
+    },
+    {
+      "seed": 3,
+      "candidate_id": "P03",
+      "detected_pose": [
+        13.950000000000003,
+        -14.699999999999985,
+        1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 1.7000000000000002,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "INSUFFICIENT_WIDTH",
+      "goal_pose": [
+        13.950000000000003,
+        -14.699999999999985,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.74278,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 2.802,
+      "reference_case": "S3",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 3,
+      "candidate_id": "P04",
+      "detected_pose": [
+        13.800000000000004,
+        14.799999999999986,
+        -1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 4.0,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        13.800000000000004,
+        14.799999999999986,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 0.95501,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 2.761,
+      "reference_case": "S4",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 3,
+      "candidate_id": "P05",
+      "detected_pose": [
+        -0.04999999999999716,
+        14.649999999999984,
+        -1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 3.3000000000000003,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "NO_VALIDATED_MANOEUVRE",
+      "goal_pose": [
+        -0.04999999999999716,
+        15.769999999999987,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "SEARCH_NODE_BUDGET",
+      "assessment_ms": 849.56,
+      "reference_case": "S5",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 3,
+      "candidate_id": "P06",
+      "detected_pose": [
+        -16.049999999999997,
+        13.849999999999987,
+        -1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 6.9,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": true,
+      "dynamic_guard_clear": true,
+      "decision": "ACCEPT",
+      "reason": "OBSERVED_FOOTPRINT_AND_REVERSE_PATH_CLEAR",
+      "goal_pose": [
+        -16.049999999999997,
+        13.849999999999987,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "VALIDATED_REVERSE_HISTORY_AND_ANALYTIC_ARC",
+      "path_length_m": 35.84486812438206,
+      "assessment_ms": 51.045,
+      "reference_case": "S6",
+      "reference_expected": "ACCEPT",
+      "correct_decision": true
+    },
+    {
+      "seed": 4,
+      "candidate_id": "P01",
+      "detected_pose": [
+        -16.049999999999997,
+        -14.549999999999985,
+        1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 3.6,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        -16.049999999999997,
+        -14.549999999999985,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.91935,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 0.681,
+      "reference_case": "S1",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 4,
+      "candidate_id": "P02",
+      "detected_pose": [
+        -0.09999999999999432,
+        -14.099999999999987,
+        1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 5.4,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": false,
+      "decision": "REJECT",
+      "reason": "DYNAMIC_OCCUPANCY_REASSESS_LATER",
+      "goal_pose": [
+        -0.09999999999999432,
+        -14.069999999999993,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "DEFERRED_UNTIL_FRESH_DYNAMIC_CLEARANCE",
+      "temporary_rejection": true,
+      "assessment_ms": 0.723,
+      "reference_case": "S2",
+      "reference_expected": "REJECT_DYNAMIC",
+      "correct_decision": true
+    },
+    {
+      "seed": 4,
+      "candidate_id": "P03",
+      "detected_pose": [
+        13.900000000000006,
+        -14.799999999999986,
+        1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 1.7000000000000002,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "INSUFFICIENT_WIDTH",
+      "goal_pose": [
+        13.900000000000006,
+        -14.799999999999986,
+        1.5707963267948966
+      ],
+      "observed_free_fraction": 0.73939,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 3.166,
+      "reference_case": "S3",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 4,
+      "candidate_id": "P04",
+      "detected_pose": [
+        13.75,
+        14.699999999999985,
+        -1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 4.0,
+      "endpoint_baseline_accept": false,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "FINAL_FOOTPRINT_OR_ORIENTATION",
+      "goal_pose": [
+        13.75,
+        14.699999999999985,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 0.95586,
+      "planning_status": "NOT_ATTEMPTED",
+      "assessment_ms": 3.612,
+      "reference_case": "S4",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 4,
+      "candidate_id": "P05",
+      "detected_pose": [
+        -0.04999999999999716,
+        14.599999999999985,
+        -1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 3.3000000000000003,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": false,
+      "dynamic_guard_clear": true,
+      "decision": "REJECT",
+      "reason": "NO_VALIDATED_MANOEUVRE",
+      "goal_pose": [
+        -0.04999999999999716,
+        15.66999999999999,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "SEARCH_NODE_BUDGET",
+      "assessment_ms": 594.617,
+      "reference_case": "S5",
+      "reference_expected": "REJECT",
+      "correct_decision": true
+    },
+    {
+      "seed": 4,
+      "candidate_id": "P06",
+      "detected_pose": [
+        -16.049999999999997,
+        13.74999999999999,
+        -1.5707963267948966
+      ],
+      "map_revision": 2290,
+      "opening_width_m": 6.9,
+      "endpoint_baseline_accept": true,
+      "manoeuvre_accept": true,
+      "dynamic_guard_clear": true,
+      "decision": "ACCEPT",
+      "reason": "OBSERVED_FOOTPRINT_AND_REVERSE_PATH_CLEAR",
+      "goal_pose": [
+        -16.049999999999997,
+        13.74999999999999,
+        -1.5707963267948966
+      ],
+      "observed_free_fraction": 1.0,
+      "planning_status": "VALIDATED_REVERSE_HISTORY_AND_ANALYTIC_ARC",
+      "path_length_m": 35.79687623807207,
+      "assessment_ms": 59.67,
+      "reference_case": "S6",
+      "reference_expected": "ACCEPT",
+      "correct_decision": true
+    }
+  ]
+}

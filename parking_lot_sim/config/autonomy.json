@@ -1,0 +1,76 @@
+{
+  "start_pose": [
+    -37,
+    -9,
+    0
+  ],
+  "laps": 2,
+  "robot": {
+    "length": 3.24,
+    "width": 2.560013932921754,
+    "wheelbase": 1.8651692055989213,
+    "wheel_radius": 0.44899015252245217,
+    "steering_limit": 0.45,
+    "curvature_limit": 0.23320432956191725,
+    "tracking_margin": 0.08,
+    "max_forward_speed": 0.65,
+    "max_reverse_speed": 0.35
+  },
+  "exploration": {
+    "west": -28.0,
+    "east": 22.0,
+    "bottom": -9.0,
+    "top": 9.0,
+    "radius": 5.5,
+    "anchor_x": -20.0,
+    "sample_step": 0.08
+  },
+  "mapping": {
+    "origin": [
+      -42.0,
+      -22.0
+    ],
+    "size": [
+      72.0,
+      44.0
+    ],
+    "resolution": 0.1,
+    "range_max": 35.0,
+    "free_probability": 0.3,
+    "hit_probability": 0.8,
+    "occupied_threshold": 0.65,
+    "free_threshold": 0.4,
+    "scan_match": true,
+    "imu_yaw_locked": true
+  },
+  "perception": {
+    "minimum_opening": 1.4,
+    "maximum_opening": 8.5,
+    "minimum_depth_support": 2.4,
+    "outer_band_min": 10.6,
+    "outer_band_max": 18.4
+  },
+  "planning": {
+    "margin": 0.18,
+    "max_nodes": 2500,
+    "timeout_s": 8.0,
+    "step_m": 0.4,
+    "sample_step": 0.08,
+    "position_tolerance": 0.18,
+    "heading_tolerance_deg": 5
+  },
+  "safety": {
+    "scan_timeout": 0.75,
+    "stream_timeout_wall_s": 15.0,
+    "obstacle_timeout": 45.0,
+    "mission_timeout": 1600.0,
+    "hold_s": 2.0,
+    "dynamic_memory_s": 700.0,
+    "startup_settle_s": 2.0
+  },
+  "noise": {
+    "range_std_m": 0.01,
+    "encoder_relative_std": 0.002,
+    "imu_std_rad": 0.0012217304763960308
+  }
+}

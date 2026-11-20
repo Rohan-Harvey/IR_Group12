@@ -1,5 +1,11 @@
 # Scenario geometry and evaluation
 
+The scene geometry, goals and routes in this document are retained from the
+original project. Its numerical feasibility conclusions were derived for the
+previous 4.62 × 2.12 m robot. This copy uses a uniformly enlarged official-mesh
+LIMO (about 3.00 × 2.12 m straight ahead); recompute those conclusions and
+reference manoeuvres before using them as LIMO evaluation labels.
+
 The single combined lot provides six identifiable cases. The case names in
 this document and in the JSON are evaluation references; there are no painted
 bays, goal markers or automatic target-selection rules in the world.

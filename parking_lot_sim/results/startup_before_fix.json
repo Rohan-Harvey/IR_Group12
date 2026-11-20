@@ -1,0 +1,22 @@
+{
+  "kind": "offline 2D ray-cast sensor and acceleration/steering-limited bicycle simulation; not Gazebo",
+  "seed": 0,
+  "initial_yaw_offset_rad": -0.1,
+  "status": "ABORTED",
+  "error": "Obstacle did not clear within the stopping budget",
+  "simulated_time_s": 74.35,
+  "laps": 0,
+  "contacts": [],
+  "final_true_pose": [
+    -21.667240352293,
+    -10.506821914969402,
+    -0.09333502328435428
+  ],
+  "final_estimated_pose": [
+    -21.656575650305214,
+    -9.011204969720566,
+    0.007135960141373854
+  ],
+  "runtime_version": "1.0.0",
+  "sensor_range_m": 20.0
+}

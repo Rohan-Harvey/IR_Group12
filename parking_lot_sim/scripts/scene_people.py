@@ -21,12 +21,12 @@ BONES = [
 ]
 PROFILES = {"blue": (0.08, 0.30, 0.72), "orange": (0.93, 0.36, 0.08), "green": (0.12, 0.55, 0.31)}
 ROUTES = [
-    {"name": "pedestrian_1", "start": [-15, 18.3], "end": [15, 18.3], "ground_z_m": 0.12, "speed": 1.0, "delay": 0, "shirt": "blue"},
-    {"name": "pedestrian_2", "start": [12, -18.3], "end": [-12, -18.3], "ground_z_m": 0.12, "speed": 0.9, "delay": 2, "shirt": "orange"},
-    {"name": "pedestrian_3", "start": [-19, -5.5], "end": [-19, -12.5], "speed": 0.8, "delay": 5, "shirt": "green"},
-    {"name": "pedestrian_4", "start": [19.5, 13], "end": [19.5, 5], "speed": 0.9, "delay": 3, "shirt": "orange"},
-    {"name": "pedestrian_5", "start": [-12, -9], "end": [12, -9], "speed": 1.0, "delay": 0, "shirt": "blue"},
-    {"name": "pedestrian_6", "start": [12, 9], "end": [-12, 9], "speed": 1.1, "delay": 1, "shirt": "green"},
+    {"name": "pedestrian_1", "start": [-15, 18.3], "end": [15, 18.3], "ground_z_m": 0.12, "speed": 1.25, "delay": 0, "shirt": "blue"},
+    {"name": "pedestrian_2", "start": [12, -18.3], "end": [-12, -18.3], "ground_z_m": 0.12, "speed": 1.2, "delay": 2, "shirt": "orange"},
+    {"name": "pedestrian_3", "start": [-19, -5.5], "end": [-19, -12.5], "speed": 1.1, "delay": 5, "shirt": "green"},
+    {"name": "pedestrian_4", "start": [19.5, 13], "end": [19.5, 5], "speed": 1.2, "delay": 3, "shirt": "orange"},
+    {"name": "pedestrian_5", "start": [-12, -9], "end": [12, -9], "speed": 1.25, "delay": 0, "shirt": "blue"},
+    {"name": "pedestrian_6", "start": [12, 9], "end": [-12, 9], "speed": 1.3, "delay": 1, "shirt": "green"},
 ]
 
 

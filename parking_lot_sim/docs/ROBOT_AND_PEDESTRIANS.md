@@ -1,15 +1,27 @@
 # Car-sized robot and walking people
 
-The robot is a low sensor platform with a **4.62 × 2.12 m footprint**, exactly
-the parked sedan envelope. Its four wheels are powered. Two front steering
-joints implement Ackermann steering with a 2.75 m wheelbase, 1.58 m track,
-0.32 m wheel radius, and 0.55 rad virtual steering limit. It cannot turn in
-place. Physical steering joints are limited to ±0.65 rad. Masses, inertias,
-controller geometry and the matching ROS URDF were updated together.
+The robot now uses the official AgileX LIMO body and wheel meshes, with
+uniform enlargement and project-specific Harmonic dynamics/interfaces.
 
-The platform remains lower than a car so its horizontal LiDAR can observe
-car body boundaries. The robot's height is not a replica of sedan bodywork;
-the car-sized footprint governs the parking tests.
+The own-robot body and wheel visuals use visibility bit 2; its GPU LiDAR
+uses mask bit 1. Thus its official visual mesh is excluded from its own
+laser measurements, while the GUI/RGB camera and external scene remain
+visible. This is a deliberate own-body exclusion simplification, not an
+optical self-occlusion model. The scan plane intersects the body mesh, so
+the unmasked version could rasterize the robot itself as nearby obstacles.
+
+- Straight-ahead footprint: approximately 3.00 × 2.12 m.
+- Conservative steering envelope width: 2.56 m.
+- Wheelbase: 1.865 m; kingpin track: 1.306 m; wheel radius: 0.449 m.
+- Virtual steering limit: 0.45 rad; physical steering joints: ±0.5236 rad.
+- Four powered wheels, front Ackermann steering; it cannot spin in place.
+
+The official mesh files, colors and proportions are preserved. Body, wheel,
+collision, mass, inertia and matching ROS frames were adapted together. Sensor
+mounts follow the official model's scaled mounting offsets. Sensor ranges and
+ROS topic names retain this scene's interfaces. Gazebo operation is not yet
+runtime-verified by these model checks. Original car-size scenario conclusions
+require a LIMO-specific assessment.
 
 ## Keyboard control
 
@@ -45,7 +57,7 @@ limits. Other controllers can publish a linear speed and yaw rate on `/cmd_vel`.
 | `/odom` | `nav_msgs/msg/Odometry` | Drive-controller odometry, 30 Hz |
 | `/joint_states` | `sensor_msgs/msg/JointState` | Four wheel joints and two steering joints |
 | `/tf` and `/tf_static` | `tf2_msgs/msg/TFMessage` | Odometry, body and sensor transforms |
-| `/bumper_contacts` | `ros_gz_interfaces/msg/Contacts` | Physical front bumper contacts |
+| `/bumper_contacts` | `ros_gz_interfaces/msg/Contacts` | Physical chassis contacts |
 | `/clock` | `rosgraph_msgs/msg/Clock` | Simulation time |
 
 The odometry frame starts at the vehicle's initial state. It is not world
@@ -66,10 +78,10 @@ For the camera, install `ros-jazzy-rqt-image-view` if needed, then:
 ros2 run rqt_image_view rqt_image_view /camera/image_raw
 ```
 
-Five pedestrians walk along the outer sidewalks. The sixth crosses the S2
-reverse-entry region. All have original bundled COLLADA skins and articulated
-walking animation. They are visual/GPU-sensor obstacles without physical
-collision responses; evaluate sensor-based stopping and minimum distance.
+One pedestrian walks back and forth across the red S6 bay mouth along
+\(y=12.65\) m between \(x=10.75\) m and \(x=17.25\) m. The actor uses the
+bundled green COLLADA skin and articulated walking animation. The actor
+appears to the camera and GPU LiDAR and does not generate contact forces.
 
 Gazebo/ROS runtime behavior remains untested in the creation workspace.
 Official references: [Ackermann controller](https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1AckermannSteering.html),

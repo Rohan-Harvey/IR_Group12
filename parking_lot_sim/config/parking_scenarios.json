@@ -2,11 +2,11 @@
   "purpose": "Evaluation/reference data ONLY. Do not feed case labels or goals to navigation.",
   "scale": 1.0,
   "layout": "six_controlled_cases",
-  "immediately_accepted_case": "S6",
+  "immediately_accepted_case": "S1",
   "immediately_accepted_cases": [
-    "S6"
+    "S1"
   ],
-  "dynamic_caveat": "S2 becomes eligible after its pedestrian clears the actual planned swept path.",
+  "dynamic_caveat": "S6 is geometrically usable when clear; a pedestrian repeatedly traverses the reverse-entry region at the bay mouth.",
   "robot_footprint_m": [
     4.62,
     2.12
@@ -18,12 +18,13 @@
   "cases": [
     {
       "id": "S1",
-      "name": "Inward-angled cars",
-      "kind": "tapered_gap",
-      "expected": "REJECT",
-      "reason": "Wide entrance, but inward-pointing cars obstruct the perpendicular final footprint.",
+      "name": "Green: clear perpendicular reverse park",
+      "kind": "clear_reverse",
+      "expected": "ACCEPT",
+      "reason": "Straight boundary cars leave a 6.28 m clear opening for a perpendicular reverse entry.",
+      "opening_width_m": 6.28,
       "goal_pose_m_deg": [
-        -14.0,
+        -13.85,
         14.6,
         -90.0
       ],
@@ -33,23 +34,20 @@
         0.0
       ],
       "target_zone_xyxy_m": [
-        -18.4,
+        -16.99,
         11.5,
-        -9.6,
+        -10.71,
         17.395
       ],
-      "static_goal_collisions": [
-        "car_S1_left",
-        "car_S1_right"
-      ],
-      "static_goal_fits": false
+      "static_goal_collisions": [],
+      "static_goal_fits": true
     },
     {
       "id": "S2",
-      "name": "Usable space, pedestrian crossing",
-      "kind": "pedestrian_block",
-      "expected": "WAIT_WHILE_BLOCKED",
-      "reason": "Static goal and reverse path fit; a walking person initially occupies the swept path. Reassess after they clear it.",
+      "name": "Yellow: inward-angled cars",
+      "kind": "tapered_gap",
+      "expected": "REJECT",
+      "reason": "The gap narrows toward the curb and the inward-pointing cars obstruct the required perpendicular final footprint.",
       "goal_pose_m_deg": [
         0.0,
         14.6,
@@ -61,18 +59,16 @@
         0.0
       ],
       "target_zone_xyxy_m": [
-        -3.6,
+        -4.4,
         11.5,
-        3.6,
+        4.4,
         17.395
       ],
-      "static_goal_collisions": [],
-      "static_goal_fits": true,
-      "reference_path_static_clear": true,
-      "reference_path_collision_samples": [],
-      "reference_path_csv": "reference_paths/S2_reverse.csv",
-      "pedestrian_intersects_reference_path_at_start": true,
-      "blocking_pedestrian": "pedestrian_S2_blocker"
+      "static_goal_collisions": [
+        "car_S1_left",
+        "car_S1_right"
+      ],
+      "static_goal_fits": false
     },
     {
       "id": "S3",
@@ -167,10 +163,10 @@
     },
     {
       "id": "S6",
-      "name": "Large clear perpendicular reverse park",
-      "kind": "clear_reverse",
-      "expected": "ACCEPT",
-      "reason": "8.00 m clear opening, a collision-free reverse arc, and a final pose perpendicular to the curb.",
+      "name": "Red: pedestrian walking across the bay mouth",
+      "kind": "pedestrian_block",
+      "expected": "WAIT_WHILE_BLOCKED",
+      "reason": "The static opening fits, but one pedestrian repeatedly crosses the reverse-entry region inside the bay mouth.",
       "opening_width_m": 8.0,
       "goal_pose_m_deg": [
         14.0,
@@ -192,7 +188,8 @@
       "static_goal_fits": true,
       "reference_path_static_clear": true,
       "reference_path_collision_samples": [],
-      "reference_path_csv": "reference_paths/S6_reverse.csv"
+      "reference_path_csv": "reference_paths/S6_reverse.csv",
+      "blocking_pedestrian": "pedestrian_red_bay"
     }
   ]
 }

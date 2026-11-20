@@ -1,29 +1,60 @@
 # Parking assessment scenarios — Gazebo Harmonic / ROS 2 Jazzy
 
-An unmarked parking lot with **47 parked sedans**, **six controlled test cases**,
-six walking people, and a **car-sized four-wheel-drive robot**. The robot's
-4.62 × 2.12 m footprint matches the parked sedan envelope, including bumpers
-and mirrors. The robot remains a low sensor platform; its height is lower than
-a sedan. It uses front Ackermann steering and cannot turn in place.
+An unmarked parking lot with 47 parked sedans, six controlled test cases,
+one walking person, and an enlarged **AgileX LIMO** in Ackermann mode. The
+body and wheel meshes come from the official `agilexrobotics/limo_ros2`
+`humble` repository. Their proportions and materials are preserved.
 
-![Six parking cases](docs/scenario_overview.png)
+The robot is uniformly enlarged to a **2.12 m straight-ahead width**; its body
+length is approximately **3.00 m**, wheelbase **1.865 m**, and wheel radius
+**0.449 m**. The steered-wheel conservative envelope is wider (2.56 m).
+The SDF, dynamics, collisions, sensors and ROS frames are project adaptations
+for Jazzy/Harmonic, not an official AgileX Jazzy release.
+
+The walker crosses the red bay mouth between its two parked cars and stays
+inside the opening. The parking mission uses a 360-degree LiDAR and two
+near-ground range scanners.
+
+The table describes the current world. The reference path CSVs and the
+overview illustration come from the earlier layout and vehicle. Use
+`config/limo.json` for the current vehicle dimensions.
+
+![Six parking cases in the earlier layout](docs/scenario_overview.png)
 
 Colored vehicles, labels and dashed paths in this drawing are evaluation
 overlays. The actual world has no painted parking lines or target markers.
 
 | Case | What the robot encounters | Expected decision |
 | --- | --- | --- |
-| S1 | Two cars angled inward; the gap narrows around the final footprint | Reject |
-| S2 | A geometrically usable space and reverse path, with a pedestrian crossing the swept path | Wait while blocked, then reassess |
+| S1 (green) | A 6.28 m opening between straight boundary cars for a perpendicular reverse park | Accept |
+| S2 (yellow) | Two cars angled inward; the gap narrows around the final footprint | Reject |
 | S3 | A 1.70 m opening, narrower than the vehicle | Reject |
 | S4 | A diagonal fit 35° away from perpendicular; allowed error is ±10° | Reject |
 | S5 | Final placement fits, but opposing cars leave a 1.75 m entry throat | Reject |
-| S6 | An 8.00 m opening with a clear reverse arc ending perpendicular to the curb | Accept |
+| S6 (red) | One pedestrian crosses the bay mouth between the two parked cars | Leave the space while the pedestrian blocks entry |
 
-**S6 is the only immediately clear accepted case at the initial snapshot.**
-S2 must become eligible once its pedestrian genuinely clears the planned path;
-it is not a permanently bad parking space. The ordinary driving aisles and
-the road outside the entrance are not parking targets.
+## Autonomous parking
+
+In Ubuntu, from this `parking_lot_sim` folder, close any older Gazebo/control
+session and run:
+
+```bash
+bash run_autonomous.sh
+```
+
+The default run starts at the entrance with the red-bay pedestrian enabled.
+It completes a mapping circuit, returns to the start, then leaves again to
+inspect the white, blue, red, yellow and green regions in order. It proposes
+perpendicular targets using sensed boundaries and uses a full swept-footprint
+audit before reverse entry. It verifies the final pose at standstill.
+
+- `bash run_autonomous.sh pedestrians:=false` runs the same entrance mission in a static scene.
+- `bash run_autonomous.sh scenario:=S6 pedestrians:=false` starts near the north-side test area.
+- `bash run_autonomous.sh gui:=false rviz:=false` runs the simulation without GUI windows.
+
+See [Autonomous parking](docs/AUTONOMOUS_PARKING.md) for implementation,
+outputs and evidence. The prior survey-and-return workflow is available via
+`ros2 launch launch/autonomous_mapping.launch.py` after sourcing ROS.
 
 ## Open the world
 
@@ -37,10 +68,10 @@ bash run.sh
 Start the robot near one case, for example the clear reverse-parking case:
 
 ```bash
-bash run.sh S6
+bash run.sh S1
 ```
 
-Replace `S6` with `S1` through `S5` for another starting condition. All cases
+Replace `S1` with `S2` through `S6` for another starting condition. All cases
 remain in the same lot; only the initial robot pose changes. Run one world
 at a time. The bundled pedestrian models need no online downloads; `run.sh`
 sets their resource path. Keep the extracted folder intact.
@@ -89,53 +120,58 @@ sudo apt install ros-jazzy-ros-gz ros-jazzy-robot-state-publisher python3-colcon
 
 This package targets Gazebo Harmonic (`gz sim`), rather than Gazebo Classic.
 
-## Scenario checks and offline scoring
+## Build a map with the existing world
+
+Keep Gazebo open and stop the previous standalone ROS/Gazebo bridge. From
+the source `parking_lot_sim` directory, run:
 
 ```bash
-python3 scripts/validate_scenarios.py
-
-# A correct final world pose in the clear space
-python3 scripts/evaluate_parking_pose.py S6 --x 14 --y 14.6 --yaw-deg -90
-
-# Same position, but 35 degrees away from perpendicular: rejected
-python3 scripts/evaluate_parking_pose.py S6 --x 14 --y 14.6 --yaw-deg -55
+source /opt/ros/jazzy/setup.bash
+ros2 launch launch/mapping.launch.py
 ```
 
-The evaluator uses a 0.15 m footprint safety margin, ±10° heading tolerance
-and 0.50 m final position tolerance. It is for independent evaluation of
-recorded **world poses**, not a navigation input or complete manoeuvre judge.
-Dynamic motion, pedestrian proximity, contact history and tracking error still
-need to be checked during each run.
+This starts laser mapping and RViz alongside the existing world. Keep using
+`python3 scripts/teleop_robot.py` in another terminal to drive through clear
+aisles. The map is built from sensor observations and wheel odometry. See
+[Mapping](docs/MAPPING.md) for display colours, dependencies, frame ownership,
+map saving and options for use with the complete ROS world launch.
 
-`config/parking_scenarios.json` contains case labels and reference goals.
-`config/reference_paths/S2_reverse.csv` and `S6_reverse.csv` contain independent
-kinematic reverse-path examples. Do not pass this simulator ground truth into
-your robot's mapping, space detection or selection algorithm. The robot should
-infer the scene from its sensors.
-
-See [Scenario geometry and evaluation](docs/SCENARIOS.md) for the geometry,
-the blocked-entry certificate, reference-path assumptions and dynamic caveat.
-
-## Edit and regenerate
+## Checks and evaluation references
 
 ```bash
-# Regenerate the supplied controlled layout and six case starts
-python3 scripts/generate_world.py
-python3 scripts/validate_scenarios.py
+python3 scripts/validate_world.py
+```
+
+This checks the supplied scenery, local resources, robot joints and sensors.
+`parking_scenarios.json` records the current scene. The earlier reference
+CSV files are retained for comparison. `validate_scenarios.py` checks the
+current LIMO footprint against the fixed target poses. A driven run measures
+execution and final parking accuracy.
+
+See `config/limo.json` for the robot's dimensions. The documented 0.15 m safety
+margin, heading tolerances and reference cases can be used when a new
+LIMO-specific evaluation is implemented. Keep all simulator ground-truth files
+separate from sensor-based mapping and space detection.
+
+## Generate earlier layouts
+
+```bash
+# Generate the earlier controlled layout and six case starts in a separate folder
+python3 scripts/generate_world.py --output-dir /tmp/original_parking
+python3 scripts/validate_world.py /tmp/original_parking
 
 # Previous random layout, now using the same car-sized steering robot
 python3 scripts/generate_world.py --layout random --seed 24 --output-dir /tmp/random_parking
 GZ_SIM_RESOURCE_PATH=/tmp/random_parking/models gz sim -r /tmp/random_parking/worlds/parking_lot.sdf
 
-# Static controlled layout; S2 also becomes usable when people are disabled
+# Static version of the earlier controlled layout
 python3 scripts/generate_world.py --no-pedestrians --output-dir /tmp/static_parking
 gz sim -r /tmp/static_parking/worlds/parking_lot.sdf
 ```
 
-The controlled layout is specified in `scripts/scene_scenarios.py`. Case
-geometry is intentional, so random angle/empty-bay options apply to the random
-layout. Uniform `--scale` resizes the included robot, cars, people and ranges
-together. Preserve car/robot size ratios when changing a case.
+The current controlled layout is in the supplied SDFs and scene metadata.
+The generator uses the earlier layout in `scripts/scene_scenarios.py`.
+Use a separate output directory to preserve the supplied worlds.
 
 For fresh previews after editing (optional numpy and matplotlib required):
 
@@ -146,16 +182,12 @@ python3 scripts/render_people_preview.py
 
 ## Verification limits
 
-The generator, XML, local assets, positive inertias, driven and steering joints,
-sensor definitions, TF names, case starts and scenario geometry were checked.
-The S2/S6 reference reverse arcs pass footprint, curb and steering-limit checks.
-The S5 approach is enclosed for the chassis footprint even though the final
-pose fits. Previews were inspected visually.
+The LIMO resource files, positive inertias, four driven wheel joints, steering
+joints, sensor definitions and matching SDF/URDF transforms are statically checked.
+The supplied worlds share the same test scenery and differ by the robot's
+starting pose across case variants. Earlier runs and reference manoeuvres are
+documented in the [validation record](docs/VALIDATION.md).
 
-Gazebo/ROS are unavailable in the creation workspace. Live actor import,
-vehicle tracking, traction, sensors and ROS bridge operation remain untested
-here. No reference trajectory has been driven in Gazebo. See
-[Validation record](docs/VALIDATION.md).
-
-All scenery, pedestrian meshes and animation data are original generated
-geometry. Source and assets use the included MIT license.
+The original scene, pedestrian geometry/animation and project source retain
+the included license. The added LIMO resources are vendor assets; see
+`models/limo/README.md` for provenance and upstream licensing information.

@@ -45,9 +45,9 @@
   ],
   "angle_offsets_deg": {},
   "suggested_robot_spawn": {
-    "x_m": -20.5,
+    "x_m": -30.0,
     "y_m": -9.0,
-    "z_m": 0.05,
+    "z_m": 0.03,
     "yaw_deg": 0.0
   }
 }

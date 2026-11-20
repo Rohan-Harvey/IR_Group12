@@ -1,0 +1,59 @@
+{
+  "mission_status": "parked",
+  "samples_with_gazebo_pose": 1116,
+  "baseline_accepted_attempts": 24,
+  "sweep_outcomes": {
+    "accepted": 24
+  },
+  "braking_guard_samples": 1,
+  "reported_chassis_contact": false,
+  "world_error_from_start_alignment_m": 3.123021228096076,
+  "world_heading_error_from_start_alignment_deg": 7.8377886962233205,
+  "world_position_error_m": 0.11049962972265072,
+  "world_heading_error_deg": 0.12399144602580833,
+  "final_world_rear_pose": [
+    -13.62423111225417,
+    15.314497092450823,
+    -1.5672882256279517
+  ],
+  "matched_reference_zones": [
+    "S1"
+  ],
+  "sampled_static_clearance_m": 0.41350059444272647,
+  "limiting_static_object": "car_C12",
+  "demonstration": {
+    "first_lap_completed": true,
+    "home_return_error_m": 0.09823387548723013,
+    "home_return_heading_error_deg": 0.22990214062689487,
+    "first_lap_end_sim_s": 136.4,
+    "inspection_order": [
+      "white",
+      "blue",
+      "red",
+      "yellow",
+      "green"
+    ],
+    "inspections": {
+      "white": "bypass",
+      "blue": "mouth_too_narrow",
+      "red": "moving_obstacle_in_mouth",
+      "yellow": "entry_sweep_blocked_or_unobserved",
+      "green": "parked"
+    },
+    "red_motion_updates": 9,
+    "all_parking_attempts_after_first_lap": true,
+    "checks": {
+      "returned_to_start": true,
+      "saved_first_lap_map": true,
+      "ordered_inspections": true,
+      "white_bypassed": true,
+      "blue_mouth_blocked": true,
+      "red_motion_observed": true,
+      "yellow_rejected": true,
+      "parked_only_after_survey": true,
+      "parked_inside_green": true,
+      "recorded_clearance_without_contact": true
+    },
+    "passed": true
+  }
+}

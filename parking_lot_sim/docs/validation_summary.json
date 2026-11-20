@@ -1,0 +1,42 @@
+{
+  "source": "Parking_Lot_Simulation (3).zip",
+  "offline_ccw": {
+    "kind": "offline geometry and bicycle kinematics, not Gazebo",
+    "scale": 1,
+    "checks_passed": true,
+    "kinematic_duration_s": 290.95,
+    "position_error_m": 0.12015,
+    "heading_error_deg": 1.2329,
+    "checkpoint_events": [
+      "passed_S2",
+      "passed_S1",
+      "passed_S3",
+      "passed_S4",
+      "passed_S5",
+      "passed_S6"
+    ]
+  },
+  "model_preservation": {
+    "scaled_planning_footprint_preserved": true,
+    "chassis_and_wheel_collisions_and_core_inertias_preserved": true,
+    "powered_and_steering_joints_preserved": true,
+    "vendor_CAD_meshes_loaded": false
+  },
+  "ultra_checks": {
+    "pedestrians": 0,
+    "camera_sensors": 0,
+    "visuals": 64,
+    "collision_shapes": 63,
+    "default_active_sensors": [
+      "one 360-degree laser",
+      "IMU"
+    ],
+    "bare_active_sensors": 0,
+    "all_nine_worlds_checked": true,
+    "syntax_and_shell_modes_checked": true
+  },
+  "colcon_build": "not run; ROS and colcon unavailable in this workspace",
+  "live_gazebo": "not run; Gazebo unavailable in this workspace",
+  "live_fps_measured": false,
+  "live_parking_verified": false
+}

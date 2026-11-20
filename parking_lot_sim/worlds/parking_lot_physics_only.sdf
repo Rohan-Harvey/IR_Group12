@@ -1,0 +1,3198 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.9">
+  <world name="parking_lot">
+    <gravity>0 0 -9.81</gravity>
+    <physics name="ultra_light" type="ignored">
+      <max_step_size>0.005</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics" />
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands" />
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster">
+      <state_hertz>20</state_hertz>
+      <dynamic_pose_hertz>30</dynamic_pose_hertz>
+    </plugin>
+    <scene>
+      <ambient>0.60 0.62 0.66 1</ambient>
+      <background>0.76 0.84 0.91 1</background>
+      <shadows>false</shadows>
+    </scene>
+    <light name="sun" type="directional">
+      <pose>0.0000000 0.0000000 30.0000000 0.0000000 0.0000000 0.0000000</pose>
+      <cast_shadows>false</cast_shadows>
+      <diffuse>0.85 0.83 0.77 1</diffuse>
+      <specular>0.25 0.25 0.25 1</specular>
+      <direction>-0.4 0.2 -0.9</direction>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+    <gui fullscreen="false">
+      <plugin filename="MinimalScene" name="3D View">
+        <gz-gui>
+          <title>3D View</title>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="state" type="string">docked</property>
+        </gz-gui>
+        <engine>ogre2</engine>
+        <scene>scene</scene>
+        <ambient_light>0.60 0.62 0.66</ambient_light>
+        <background_color>0.76 0.84 0.91</background_color>
+        <camera_pose>-52.0000000 -49.0000000 65.0000000 0.0000000 0.7500000 0.7610000</camera_pose>
+        <camera_clip>
+          <near>0.1</near>
+          <far>500</far>
+        </camera_clip>
+      </plugin>
+      <plugin filename="GzSceneManager" name="Scene Manager">
+        <gz-gui>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="state" type="string">floating</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="InteractiveViewControl" name="Interactive view control">
+        <gz-gui>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="state" type="string">floating</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="WorldControl" name="WorldControl">
+        <gz-gui>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">140</property>
+          <property key="height" type="double">72</property>
+          <property key="state" type="string">floating</property>
+          <anchors target="3D View">
+            <line own="left" target="left" />
+            <line own="bottom" target="bottom" />
+          </anchors>
+        </gz-gui>
+        <play_pause>true</play_pause>
+        <step>true</step>
+        <start_paused>false</start_paused>
+        <service>/world/parking_lot/control</service>
+        <stats_topic>/world/parking_lot/stats</stats_topic>
+      </plugin>
+      <plugin filename="WorldStats" name="WorldStats">
+        <gz-gui>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">300</property>
+          <property key="height" type="double">110</property>
+          <property key="state" type="string">floating</property>
+          <anchors target="3D View">
+            <line own="right" target="right" />
+            <line own="bottom" target="bottom" />
+          </anchors>
+        </gz-gui>
+        <sim_time>true</sim_time>
+        <real_time>true</real_time>
+        <real_time_factor>true</real_time_factor>
+        <iterations>true</iterations>
+        <topic>/world/parking_lot/stats</topic>
+      </plugin>
+    </gui>
+    <model name="ground_and_asphalt">
+      <static>true</static>
+      <pose>0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</pose>
+      <link name="body">
+        <visual name="asphalt">
+          <pose>-2.5000000 0.0000000 -0.0500000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>59.0000000 40.0000000 0.1000000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.20 0.22 0.24 1</ambient>
+            <diffuse>0.20 0.22 0.24 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="asphalt_collision">
+          <pose>-2.5000000 0.0000000 -0.0500000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>59.0000000 40.0000000 0.1000000</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="entrance_road">
+          <pose>-37.0000000 -9.0000000 -0.0500000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>10.0000000 6.4000000 0.1000000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.20 0.22 0.24 1</ambient>
+            <diffuse>0.20 0.22 0.24 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="entrance_road_collision">
+          <pose>-37.0000000 -9.0000000 -0.0500000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>10.0000000 6.4000000 0.1000000</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="parking_boundary_-1">
+      <static>true</static>
+      <pose>0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</pose>
+      <link name="body">
+        <visual name="barrier">
+          <pose>0.0000000 -17.4700000 0.4250000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>54.0000000 0.1500000 0.8500000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.69 0.70 0.68 1</ambient>
+            <diffuse>0.69 0.70 0.68 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="barrier_collision">
+          <pose>0.0000000 -17.4700000 0.4250000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>54.0000000 0.1500000 0.8500000</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="parking_boundary_1">
+      <static>true</static>
+      <pose>0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</pose>
+      <link name="body">
+        <visual name="barrier_-16">
+          <pose>-16.0000000 17.4700000 0.4250000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>22.0000000 0.1500000 0.8500000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.69 0.70 0.68 1</ambient>
+            <diffuse>0.69 0.70 0.68 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="barrier_-16_collision">
+          <pose>-16.0000000 17.4700000 0.4250000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>22.0000000 0.1500000 0.8500000</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="barrier_16">
+          <pose>16.0000000 17.4700000 0.4250000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>22.0000000 0.1500000 0.8500000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.69 0.70 0.68 1</ambient>
+            <diffuse>0.69 0.70 0.68 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="barrier_16_collision">
+          <pose>16.0000000 17.4700000 0.4250000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>22.0000000 0.1500000 0.8500000</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="central_island">
+      <static>true</static>
+      <pose>0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</pose>
+      <link name="body">
+        <visual name="planter">
+          <pose>-2.0000000 0.0000000 0.4250000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>40.0000000 1.2000000 0.8500000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.52 0.54 0.49 1</ambient>
+            <diffuse>0.52 0.54 0.49 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="planter_collision">
+          <pose>-2.0000000 0.0000000 0.4250000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>40.0000000 1.2000000 0.8500000</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="perimeter_walls">
+      <static>true</static>
+      <pose>0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</pose>
+      <link name="body">
+        <visual name="north">
+          <pose>-2.5000000 20.1500000 0.6000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>59.6000000 0.3000000 1.2000000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.50 0.52 0.53 1</ambient>
+            <diffuse>0.50 0.52 0.53 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="north_collision">
+          <pose>-2.5000000 20.1500000 0.6000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>59.6000000 0.3000000 1.2000000</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="south">
+          <pose>-2.5000000 -20.1500000 0.6000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>59.6000000 0.3000000 1.2000000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.50 0.52 0.53 1</ambient>
+            <diffuse>0.50 0.52 0.53 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="south_collision">
+          <pose>-2.5000000 -20.1500000 0.6000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>59.6000000 0.3000000 1.2000000</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="east">
+          <pose>27.1500000 0.0000000 0.6000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>0.3000000 40.0000000 1.2000000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.50 0.52 0.53 1</ambient>
+            <diffuse>0.50 0.52 0.53 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="east_collision">
+          <pose>27.1500000 0.0000000 0.6000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>0.3000000 40.0000000 1.2000000</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="west_north">
+          <pose>-32.1500000 7.1000000 0.6000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>0.3000000 25.8000000 1.2000000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.50 0.52 0.53 1</ambient>
+            <diffuse>0.50 0.52 0.53 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="west_north_collision">
+          <pose>-32.1500000 7.1000000 0.6000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>0.3000000 25.8000000 1.2000000</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="west_south">
+          <pose>-32.1500000 -16.1000000 0.6000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>0.3000000 7.8000000 1.2000000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.50 0.52 0.53 1</ambient>
+            <diffuse>0.50 0.52 0.53 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="west_south_collision">
+          <pose>-32.1500000 -16.1000000 0.6000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>0.3000000 7.8000000 1.2000000</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="S5_back_wall">
+      <static>true</static>
+      <pose>0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</pose>
+      <link name="body">
+        <visual name="wall">
+          <pose>0.0000000 18.5000000 0.5000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>10.0000000 0.2000000 1.0000000</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.60 0.61 0.56 1</ambient>
+            <diffuse>0.60 0.61 0.56 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <collision name="wall_collision">
+          <pose>0.0000000 18.5000000 0.5000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>10.0000000 0.2000000 1.0000000</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S1_left">
+      <static>true</static>
+      <pose>-18.3000000 -13.2000000 0.0300000 0.0000000 0.0000000 1.0471976</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S1_right">
+      <static>true</static>
+      <pose>-13.7000000 -13.2000000 0.0300000 0.0000000 0.0000000 2.0943951</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S2_-1">
+      <static>true</static>
+      <pose>-3.8000000 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S3_-1">
+      <static>true</static>
+      <pose>12.0900000 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S5_side_-1">
+      <static>true</static>
+      <pose>-2.7600000 15.9000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S5_approach_-1">
+      <static>true</static>
+      <pose>-2.3493517 11.9000000 0.0300000 0.0000000 0.0000000 0.0000000</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.82 0.48 0.09 1</ambient>
+            <diffuse>0.82 0.48 0.09 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S6_-1">
+      <static>true</static>
+      <pose>-20.5600000 13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S2_1">
+      <static>true</static>
+      <pose>3.8000000 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S3_1">
+      <static>true</static>
+      <pose>15.9100000 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S5_side_1">
+      <static>true</static>
+      <pose>2.7600000 15.9000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S5_approach_1">
+      <static>true</static>
+      <pose>2.3493517 11.9000000 0.0300000 0.0000000 0.0000000 0.0000000</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S6_1">
+      <static>true</static>
+      <pose>-11.4400000 13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.82 0.48 0.09 1</ambient>
+            <diffuse>0.82 0.48 0.09 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S4_-1">
+      <static>true</static>
+      <pose>11.5474023 13.3073274 0.0300000 0.0000000 0.0000000 -1.2217305</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_S4_1">
+      <static>true</static>
+      <pose>16.4525977 15.0926726 0.0300000 0.0000000 0.0000000 -1.2217305</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_-1_0_0">
+      <static>true</static>
+      <pose>-24.0358876 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_-1_0_1">
+      <static>true</static>
+      <pose>-21.5317752 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_-1_2_0">
+      <static>true</static>
+      <pose>-10.7092529 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_-1_2_1">
+      <static>true</static>
+      <pose>-8.4461686 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.82 0.48 0.09 1</ambient>
+            <diffuse>0.82 0.48 0.09 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_-1_2_2">
+      <static>true</static>
+      <pose>-6.1830843 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_-1_4_0">
+      <static>true</static>
+      <pose>6.6033333 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_-1_4_1">
+      <static>true</static>
+      <pose>9.2866667 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_-1_6_0">
+      <static>true</static>
+      <pose>18.2575000 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_-1_6_1">
+      <static>true</static>
+      <pose>20.4850000 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_-1_6_2">
+      <static>true</static>
+      <pose>22.7125000 -13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.82 0.48 0.09 1</ambient>
+            <diffuse>0.82 0.48 0.09 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_1_0_0">
+      <static>true</static>
+      <pose>-23.6100000 13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_1_2_0">
+      <static>true</static>
+      <pose>-8.5162345 13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_1_2_1">
+      <static>true</static>
+      <pose>-5.7124689 13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_1_4_0">
+      <static>true</static>
+      <pose>5.5986421 13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_1_4_1">
+      <static>true</static>
+      <pose>8.2885809 13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_1_6_0">
+      <static>true</static>
+      <pose>19.6609869 13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.82 0.48 0.09 1</ambient>
+            <diffuse>0.82 0.48 0.09 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_filler_1_6_1">
+      <static>true</static>
+      <pose>22.3004935 13.6000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_0">
+      <static>true</static>
+      <pose>-21.2000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_1">
+      <static>true</static>
+      <pose>-18.8000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_2">
+      <static>true</static>
+      <pose>-16.4000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_3">
+      <static>true</static>
+      <pose>-14.0000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_4">
+      <static>true</static>
+      <pose>-11.6000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.82 0.48 0.09 1</ambient>
+            <diffuse>0.82 0.48 0.09 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_5">
+      <static>true</static>
+      <pose>-9.2000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_6">
+      <static>true</static>
+      <pose>-6.8000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_7">
+      <static>true</static>
+      <pose>-4.4000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_8">
+      <static>true</static>
+      <pose>-2.0000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_9">
+      <static>true</static>
+      <pose>0.4000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_10">
+      <static>true</static>
+      <pose>2.8000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.82 0.48 0.09 1</ambient>
+            <diffuse>0.82 0.48 0.09 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_11">
+      <static>true</static>
+      <pose>5.2000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_12">
+      <static>true</static>
+      <pose>7.6000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_13">
+      <static>true</static>
+      <pose>10.0000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_14">
+      <static>true</static>
+      <pose>12.4000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_15">
+      <static>true</static>
+      <pose>14.8000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_-3.2_16">
+      <static>true</static>
+      <pose>17.2000000 -3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.82 0.48 0.09 1</ambient>
+            <diffuse>0.82 0.48 0.09 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_0">
+      <static>true</static>
+      <pose>-21.2000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_1">
+      <static>true</static>
+      <pose>-18.8000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_2">
+      <static>true</static>
+      <pose>-16.4000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_3">
+      <static>true</static>
+      <pose>-14.0000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_4">
+      <static>true</static>
+      <pose>-11.6000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_5">
+      <static>true</static>
+      <pose>-9.2000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.82 0.48 0.09 1</ambient>
+            <diffuse>0.82 0.48 0.09 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_6">
+      <static>true</static>
+      <pose>-6.8000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_7">
+      <static>true</static>
+      <pose>-4.4000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_8">
+      <static>true</static>
+      <pose>-2.0000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_9">
+      <static>true</static>
+      <pose>0.4000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_10">
+      <static>true</static>
+      <pose>2.8000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_11">
+      <static>true</static>
+      <pose>5.2000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.82 0.48 0.09 1</ambient>
+            <diffuse>0.82 0.48 0.09 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_12">
+      <static>true</static>
+      <pose>7.6000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.63 0.68 0.72 1</ambient>
+            <diffuse>0.63 0.68 0.72 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_13">
+      <static>true</static>
+      <pose>10.0000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.06 0.22 0.55 1</ambient>
+            <diffuse>0.06 0.22 0.55 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_14">
+      <static>true</static>
+      <pose>12.4000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.66 0.08 0.07 1</ambient>
+            <diffuse>0.66 0.08 0.07 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_15">
+      <static>true</static>
+      <pose>14.8000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.88 0.90 0.88 1</ambient>
+            <diffuse>0.88 0.90 0.88 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="car_inner_3.2_16">
+      <static>true</static>
+      <pose>17.2000000 3.2000000 0.0300000 0.0000000 0.0000000 1.5707963</pose>
+      <link name="body">
+        <visual name="body">
+          <pose>-0.0212051 0.0000000 1.3562772 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.1371177</size>
+            </box>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <material>
+            <ambient>0.12 0.36 0.25 1</ambient>
+            <diffuse>0.12 0.36 0.25 1</diffuse>
+            <specular>0.18 0.18 0.18 1</specular>
+          </material>
+        </visual>
+        <visual name="wheels">
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/parked_wheels.dae</uri>
+              <scale>1.0000000 1.0000000 1.0000000</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+        <collision name="vehicle_collision">
+          <geometry>
+            <box>
+              <size>2.9987034 2.1200000 2.4248360</size>
+            </box>
+          </geometry>
+          <pose>0.0000000 0.0000000 1.2124180 0.0000000 0.0000000 0.0000000</pose>
+        </collision>
+      </link>
+    </model>
+    <model name="parking_robot" canonical_link="base_link">
+      <static>false</static>
+      <self_collide>false</self_collide>
+      <pose>-37.0000000 -9.0000000 0.0300000 0.0000000 0.0000000 0.0000000</pose>
+      <link name="base_link">
+        <pose>0.0000000 0.0000000 1.2261440 0.0000000 0.0000000 0.0000000</pose>
+        <inertial>
+          <mass>2037.0923318370333</mass>
+          <inertia>
+            <ixx>1308.3123108671446</ixx>
+            <iyy>2301.828458720114</iyy>
+            <izz>2059.481643610648</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>-0.0212051 0.0000000 0.1301332 0.0000000 0.0000000 0.0000000</pose>
+        </inertial>
+        <visual name="limo_body">
+          <pose>0 0 -1.1657307534993258 0 0 1.5707963267948966</pose>
+          <visibility_flags>2</visibility_flags>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/limo_base.dae</uri>
+              <scale>9.325846027994606 9.325846027994606 9.325846027994606</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name="chassis_collision">
+          <pose>-0.0212051 0.0000000 0.1301332 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <box>
+              <size>2.9987034 1.7719107 2.1371177</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <link name="front_left_knuckle">
+        <pose>0.9325846 0.6528092 0.4489902 0.0000000 0.0000000 0.0000000</pose>
+        <inertial>
+          <mass>117.34402833162635</mass>
+          <inertia>
+            <ixx>148.831300788256</ixx>
+            <iyy>9.922086719217065</iyy>
+            <izz>148.831300788256</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+      </link>
+      <joint name="front_left_steering_joint" type="revolute">
+        <parent>base_link</parent>
+        <child>front_left_knuckle</child>
+        <axis>
+          <xyz expressed_in="__model__">0 0 1</xyz>
+          <limit>
+            <lower>-0.523598767</lower>
+            <upper>0.523598767</upper>
+            <effort>1500</effort>
+            <velocity>1.5</velocity>
+          </limit>
+        </axis>
+      </joint>
+      <link name="front_left_wheel">
+        <pose>0.9325846 0.7118540 0.4489902 -1.5707963 0.0000000 0.0000000</pose>
+        <inertial>
+          <mass>234.6880566632527</mass>
+          <inertia>
+            <ixx>21.309656521317034</ixx>
+            <iyy>21.309656521317034</iyy>
+            <izz>23.655635789732823</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="tire_collision">
+          <pose>0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.44899015252245217</radius>
+              <length>0.6962920049082104</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+                <slip1>0.01</slip1>
+                <slip2>0.05</slip2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="limo_wheel">
+          <pose>0 0 -0.059044775586272386 1.5707963267948966 0 0</pose>
+          <visibility_flags>2</visibility_flags>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/limo_wheel.dae</uri>
+              <scale>9.325846027994606 9.325846027994606 9.325846027994606</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name="front_left_wheel_joint" type="revolute">
+        <parent>front_left_knuckle</parent>
+        <child>front_left_wheel</child>
+        <axis>
+          <xyz expressed_in="front_left_knuckle">0 1 0</xyz>
+          <limit>
+            <lower>-1e16</lower>
+            <upper>1e16</upper>
+            <effort>800</effort>
+            <velocity>20</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.02</damping>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name="front_right_knuckle">
+        <pose>0.9325846 -0.6528092 0.4489902 0.0000000 0.0000000 0.0000000</pose>
+        <inertial>
+          <mass>117.34402833162635</mass>
+          <inertia>
+            <ixx>148.831300788256</ixx>
+            <iyy>9.922086719217065</iyy>
+            <izz>148.831300788256</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+      </link>
+      <joint name="front_right_steering_joint" type="revolute">
+        <parent>base_link</parent>
+        <child>front_right_knuckle</child>
+        <axis>
+          <xyz expressed_in="__model__">0 0 1</xyz>
+          <limit>
+            <lower>-0.523598767</lower>
+            <upper>0.523598767</upper>
+            <effort>1500</effort>
+            <velocity>1.5</velocity>
+          </limit>
+        </axis>
+      </joint>
+      <link name="front_right_wheel">
+        <pose>0.9325846 -0.7118540 0.4489902 -1.5707963 0.0000000 0.0000000</pose>
+        <inertial>
+          <mass>234.6880566632527</mass>
+          <inertia>
+            <ixx>21.309656521317034</ixx>
+            <iyy>21.309656521317034</iyy>
+            <izz>23.655635789732823</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="tire_collision">
+          <pose>0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.44899015252245217</radius>
+              <length>0.6962920049082104</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+                <slip1>0.01</slip1>
+                <slip2>0.05</slip2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="limo_wheel">
+          <pose>0 0 0.059044775586272386 -1.5707963267948966 0 0</pose>
+          <visibility_flags>2</visibility_flags>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/limo_wheel.dae</uri>
+              <scale>9.325846027994606 9.325846027994606 9.325846027994606</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name="front_right_wheel_joint" type="revolute">
+        <parent>front_right_knuckle</parent>
+        <child>front_right_wheel</child>
+        <axis>
+          <xyz expressed_in="front_right_knuckle">0 1 0</xyz>
+          <limit>
+            <lower>-1e16</lower>
+            <upper>1e16</upper>
+            <effort>800</effort>
+            <velocity>20</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.02</damping>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name="rear_left_wheel">
+        <pose>-0.9325846 0.7118540 0.4489902 -1.5707963 0.0000000 0.0000000</pose>
+        <inertial>
+          <mass>234.6880566632527</mass>
+          <inertia>
+            <ixx>21.309656521317034</ixx>
+            <iyy>21.309656521317034</iyy>
+            <izz>23.655635789732823</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="tire_collision">
+          <pose>0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.44899015252245217</radius>
+              <length>0.6962920049082104</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+                <slip1>0.01</slip1>
+                <slip2>0.05</slip2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="limo_wheel">
+          <pose>0 0 -0.059044775586272386 1.5707963267948966 0 0</pose>
+          <visibility_flags>2</visibility_flags>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/limo_wheel.dae</uri>
+              <scale>9.325846027994606 9.325846027994606 9.325846027994606</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name="rear_left_wheel_joint" type="revolute">
+        <parent>base_link</parent>
+        <child>rear_left_wheel</child>
+        <axis>
+          <xyz expressed_in="__model__">0 1 0</xyz>
+          <limit>
+            <lower>-1e16</lower>
+            <upper>1e16</upper>
+            <effort>800</effort>
+            <velocity>20</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.02</damping>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name="rear_right_wheel">
+        <pose>-0.9325846 -0.7118540 0.4489902 -1.5707963 0.0000000 0.0000000</pose>
+        <inertial>
+          <mass>234.6880566632527</mass>
+          <inertia>
+            <ixx>21.309656521317034</ixx>
+            <iyy>21.309656521317034</iyy>
+            <izz>23.655635789732823</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="tire_collision">
+          <pose>0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.44899015252245217</radius>
+              <length>0.6962920049082104</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+                <slip1>0.01</slip1>
+                <slip2>0.05</slip2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="limo_wheel">
+          <pose>0 0 0.059044775586272386 -1.5707963267948966 0 0</pose>
+          <visibility_flags>2</visibility_flags>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <mesh>
+              <uri>model://limo/meshes/limo_wheel.dae</uri>
+              <scale>9.325846027994606 9.325846027994606 9.325846027994606</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name="rear_right_wheel_joint" type="revolute">
+        <parent>base_link</parent>
+        <child>rear_right_wheel</child>
+        <axis>
+          <xyz expressed_in="__model__">0 1 0</xyz>
+          <limit>
+            <lower>-1e16</lower>
+            <upper>1e16</upper>
+            <effort>800</effort>
+            <velocity>20</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.02</damping>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name="lidar_link">
+        <pose>0.0000000 0.0000000 0.7500000 0.0000000 0.0000000 0.0000000</pose>
+        <inertial>
+          <mass>0.05</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <iyy>0.0001</iyy>
+            <izz>0.0001</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        </link>
+      <joint name="lidar_link_fixed" type="fixed">
+        <parent>base_link</parent>
+        <child>lidar_link</child>
+      </joint>
+      <link name="imu_link">
+        <pose>0.0000000 0.0000000 0.4489902 0.0000000 0.0000000 0.0000000</pose>
+        <inertial>
+          <mass>0.05</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <iyy>0.0001</iyy>
+            <izz>0.0001</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        </link>
+      <joint name="imu_link_fixed" type="fixed">
+        <parent>base_link</parent>
+        <child>imu_link</child>
+      </joint>
+      <plugin filename="gz-sim-ackermann-steering-system" name="gz::sim::systems::AckermannSteering">
+        <left_joint>front_left_wheel_joint</left_joint>
+        <left_joint>rear_left_wheel_joint</left_joint>
+        <right_joint>front_right_wheel_joint</right_joint>
+        <right_joint>rear_right_wheel_joint</right_joint>
+        <left_steering_joint>front_left_steering_joint</left_steering_joint>
+        <right_steering_joint>front_right_steering_joint</right_steering_joint>
+        <wheel_separation>1.42370799509179</wheel_separation>
+        <wheel_radius>0.44899015252245217</wheel_radius>
+        <wheel_base>1.8651692055989213</wheel_base>
+        <kingpin_width>1.305618443919245</kingpin_width>
+        <steering_limit>0.45</steering_limit>
+        <steer_p_gain>5.0</steer_p_gain>
+        <topic>/robot/cmd_vel</topic>
+        <odom_topic>/robot/odom</odom_topic>
+        <tf_topic>/robot/tf</tf_topic>
+        <frame_id>odom</frame_id>
+        <child_frame_id>base_footprint</child_frame_id>
+        <odom_publish_frequency>20</odom_publish_frequency>
+        <max_velocity>0.8</max_velocity>
+        <min_velocity>-0.8</min_velocity>
+        <max_acceleration>0.5</max_acceleration>
+        <min_acceleration>-0.5</min_acceleration>
+      </plugin>
+      </model>
+    </world>
+</sdf>
