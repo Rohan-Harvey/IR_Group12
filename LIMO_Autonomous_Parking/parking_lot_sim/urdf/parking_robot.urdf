@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="parking_robot">
+  <link name="rear_axle" />
+  <link name="base_footprint" />
+  <link name="base_link">
+    <visual>
+      <origin xyz="0.0 0.0 -1.1657307534993258" rpy="0 0 1.5707963267948966" />
+      <geometry>
+        <mesh filename="package://parking_lot_sim/models/limo/meshes/limo_base.dae" scale="9.325846027994606 9.325846027994606 9.325846027994606" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="base_fixed" type="fixed">
+    <parent link="base_footprint" />
+    <child link="base_link" />
+    <origin xyz="0.0 0.0 1.2261439881886695" rpy="0 0 0" />
+  </joint>
+  <joint name="rear_axle_fixed" type="fixed">
+    <parent link="rear_axle" />
+    <child link="base_footprint" />
+    <origin xyz="0.9325846027994606 0.0 0.0" rpy="0 0 0" />
+  </joint>
+  <link name="front_left_wheel">
+    <visual>
+      <origin xyz="0.0 0.0 -0.059044775586272386" rpy="1.5707963267948966 0 0" />
+      <geometry>
+        <mesh filename="package://parking_lot_sim/models/limo/meshes/limo_wheel.dae" scale="9.325846027994606 9.325846027994606 9.325846027994606" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="front_left_knuckle" />
+  <joint name="front_left_steering_joint" type="revolute">
+    <parent link="base_link" />
+    <child link="front_left_knuckle" />
+    <origin xyz="0.9325846027994606 0.6528092219596225 -0.7771538356662173" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.523598767" upper="0.523598767" effort="1500" velocity="1.5" />
+  </joint>
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="front_left_knuckle" />
+    <child link="front_left_wheel" />
+    <origin xyz="0.0 0.05904477558627241 0.0" rpy="-1.5707963267948966 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="front_right_wheel">
+    <visual>
+      <origin xyz="0.0 0.0 0.059044775586272386" rpy="-1.5707963267948966 0 0" />
+      <geometry>
+        <mesh filename="package://parking_lot_sim/models/limo/meshes/limo_wheel.dae" scale="9.325846027994606 9.325846027994606 9.325846027994606" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="front_right_knuckle" />
+  <joint name="front_right_steering_joint" type="revolute">
+    <parent link="base_link" />
+    <child link="front_right_knuckle" />
+    <origin xyz="0.9325846027994606 -0.6528092219596225 -0.7771538356662173" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.523598767" upper="0.523598767" effort="1500" velocity="1.5" />
+  </joint>
+  <joint name="front_right_wheel_joint" type="continuous">
+    <parent link="front_right_knuckle" />
+    <child link="front_right_wheel" />
+    <origin xyz="0.0 -0.05904477558627241 0.0" rpy="-1.5707963267948966 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="rear_left_wheel">
+    <visual>
+      <origin xyz="0.0 0.0 -0.059044775586272386" rpy="1.5707963267948966 0 0" />
+      <geometry>
+        <mesh filename="package://parking_lot_sim/models/limo/meshes/limo_wheel.dae" scale="9.325846027994606 9.325846027994606 9.325846027994606" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rear_left_wheel_joint" type="continuous">
+    <parent link="base_link" />
+    <child link="rear_left_wheel" />
+    <origin xyz="-0.9325846027994606 0.711853997545895 -0.7771538356662173" rpy="-1.5707963267948966 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="rear_right_wheel">
+    <visual>
+      <origin xyz="0.0 0.0 0.059044775586272386" rpy="-1.5707963267948966 0 0" />
+      <geometry>
+        <mesh filename="package://parking_lot_sim/models/limo/meshes/limo_wheel.dae" scale="9.325846027994606 9.325846027994606 9.325846027994606" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rear_right_wheel_joint" type="continuous">
+    <parent link="base_link" />
+    <child link="rear_right_wheel" />
+    <origin xyz="-0.9325846027994606 -0.711853997545895 -0.7771538356662173" rpy="-1.5707963267948966 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="lidar_link" />
+  <joint name="lidar_link_fixed" type="fixed">
+    <parent link="base_link" />
+    <child link="lidar_link" />
+    <origin xyz="0.9605621408834445 0.0 -0.07771538356662172" rpy="0 0 0" />
+  </joint>
+  <link name="camera_link" />
+  <joint name="camera_link_fixed" type="fixed">
+    <parent link="base_link" />
+    <child link="camera_link" />
+    <origin xyz="0.7771538356662173 0.0 0.5051499931830412" rpy="0 0 0" />
+  </joint>
+  <link name="imu_link" />
+  <joint name="imu_link_fixed" type="fixed">
+    <parent link="base_link" />
+    <child link="imu_link" />
+    <origin xyz="0.0 0.0 -0.7771538356662173" rpy="0 0 0" />
+  </joint>
+  <link name="low_front_link" />
+  <joint name="low_front_link_fixed" type="fixed">
+    <parent link="base_link" />
+    <child link="low_front_link" />
+    <origin xyz="1.5131465954371448 0.0 -1.1061439881886694" rpy="0 0 0" />
+  </joint>
+  <link name="low_rear_link" />
+  <joint name="low_rear_link_fixed" type="fixed">
+    <parent link="base_link" />
+    <child link="low_rear_link" />
+    <origin xyz="-1.5555568128340531 0.0 -1.1061439881886694" rpy="0 0 3.141592653589793" />
+  </joint>
+  <link name="camera_optical_frame" />
+  <joint name="camera_optical_fixed" type="fixed">
+    <parent link="camera_link" />
+    <child link="camera_optical_frame" />
+    <origin xyz="0.07 0.0 0.0" rpy="-1.5707963267948966 0 -1.5707963267948966" />
+  </joint>
+</robot>

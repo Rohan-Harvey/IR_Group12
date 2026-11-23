@@ -1,0 +1,93 @@
+{
+  "folders": [
+    {
+      "name": "LIMO Autonomous Parking",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/.pytest_cache": true
+    },
+    "python.defaultInterpreterPath": "/usr/bin/python3"
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "环境检查",
+        "type": "process",
+        "command": "bash",
+        "options": {
+          "cwd": "${workspaceFolder}/parking_lot_sim"
+        },
+        "problemMatcher": [],
+        "args": [
+          "-c",
+          "source /opt/ros/jazzy/setup.bash && python3 -B scripts/check_runtime.py"
+        ]
+      },
+      {
+        "label": "自主泊车 · Gazebo 和 RViz",
+        "type": "process",
+        "command": "bash",
+        "options": {
+          "cwd": "${workspaceFolder}/parking_lot_sim"
+        },
+        "problemMatcher": [],
+        "args": [
+          "run_autonomous.sh"
+        ]
+      },
+      {
+        "label": "自主泊车 · 无界面",
+        "type": "process",
+        "command": "bash",
+        "options": {
+          "cwd": "${workspaceFolder}/parking_lot_sim"
+        },
+        "problemMatcher": [],
+        "args": [
+          "run_autonomous.sh",
+          "gui:=false",
+          "rviz:=false"
+        ]
+      },
+      {
+        "label": "检查场景和运行单元测试",
+        "type": "process",
+        "command": "bash",
+        "options": {
+          "cwd": "${workspaceFolder}/parking_lot_sim"
+        },
+        "problemMatcher": [],
+        "args": [
+          "-c",
+          "python3 -B scripts/validate_scenarios.py && PYTHONPATH=./scripts python3 -B -m unittest discover -s tests"
+        ],
+        "group": "test"
+      },
+      {
+        "label": "复核随包两圈实验",
+        "type": "process",
+        "command": "bash",
+        "options": {
+          "cwd": "${workspaceFolder}/parking_lot_sim"
+        },
+        "problemMatcher": [],
+        "args": [
+          "-c",
+          "python3 -B scripts/evaluate_run.py results/verified_two_lap_entrance --check-demonstration"
+        ]
+      }
+    ]
+  }
+}

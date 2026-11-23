@@ -1,0 +1,51 @@
+{"sim_s": 0.4, "event": "choosing", "detail": "Laser, near-ground sensors, SLAM and planner are ready."}
+{"sim_s": 0.4, "event": "mapping_entry", "detail": "Following the continuous rear-axle course with live obstacle protection."}
+{"sim_s": 16.8, "event": "mapping_loop", "detail": "Following the continuous rear-axle course with live obstacle protection."}
+{"sim_s": 110.8, "event": "return_home", "detail": "Following the continuous rear-axle course with live obstacle protection."}
+{"sim_s": 136.4, "event": "lap_one_complete", "return_error_m": 0.0647769267552141, "heading_error_deg": 0.413018612247569}
+{"sim_s": 136.534, "event": "inspection_entry", "detail": "Following the continuous rear-axle course with live obstacle protection."}
+{"sim_s": 153.9, "event": "inspection_transit", "detail": "Following the continuous rear-axle course with live obstacle protection."}
+{"sim_s": 167.6, "event": "inspecting", "detail": "Measuring the white approach."}
+{"sim_s": 167.708, "event": "inspection", "station": "white", "decision": "bypass", "nearby_obstacle_observed": true}
+{"sim_s": 167.832, "event": "inspection_transit", "detail": "Following the continuous rear-axle course with live obstacle protection."}
+{"sim_s": 183.9, "event": "inspecting", "detail": "Measuring the blue approach."}
+{"sim_s": 186.702, "event": "aperture_measurement", "station": "blue", "final_poses_fitting": 10, "straight_sweeps_clear": 0, "observed_mouth_width_m": 3.0, "required_width_m": 2.7600139329217543, "mouth_probes_blocked": 9, "mouth_probes": 9}
+{"sim_s": 186.702, "event": "inspection", "station": "blue", "decision": "mouth_too_narrow", "final_poses_fitting": 10, "straight_sweeps_clear": 0}
+{"sim_s": 186.838, "event": "inspection_transit", "detail": "Following the continuous rear-axle course with live obstacle protection."}
+{"sim_s": 216.5, "event": "inspecting", "detail": "Measuring the red approach."}
+{"sim_s": 219.3, "event": "inspection", "station": "red", "decision": "moving_obstacle_in_mouth", "tracking_updates": 9}
+{"sim_s": 219.4, "event": "inspection_transit", "detail": "Following the continuous rear-axle course with live obstacle protection."}
+{"sim_s": 233.8, "event": "inspecting", "detail": "Measuring the yellow approach."}
+{"sim_s": 236.646, "event": "aperture_measurement", "station": "yellow", "final_poses_fitting": 15, "straight_sweeps_clear": 0, "observed_mouth_width_m": 3.5999999999999996, "required_width_m": 2.7600139329217543, "mouth_probes_blocked": 8, "mouth_probes": 9}
+{"sim_s": 236.646, "event": "inspection", "station": "yellow", "decision": "entry_sweep_blocked_or_unobserved", "final_poses_fitting": 15, "straight_sweeps_clear": 0}
+{"sim_s": 236.777, "event": "inspection_transit", "detail": "Following the continuous rear-axle course with live obstacle protection."}
+{"sim_s": 253.7, "event": "inspecting", "detail": "Measuring the green approach."}
+{"sim_s": 256.7, "event": "aperture_measurement", "station": "green", "final_poses_fitting": 81, "straight_sweeps_clear": 81, "observed_mouth_width_m": null, "required_width_m": 2.7600139329217543, "mouth_probes_blocked": 0, "mouth_probes": 9}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [14.783625835673256, 21.94194127594059, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.03094180418581, 21.742874148186857, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [14.99458250443624, 22.000319290540954, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [14.95822320468667, 22.25776443289505, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.273794903662537, 21.83408588312419, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.234638734701461, 22.11133449796706, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.19827943495189, 22.368779640321158, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.16192013520232, 22.626224782675255, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.477491834178187, 22.202546232904393, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.43833566521711, 22.479794847747264, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.40197636546754, 22.73723999010136, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.36561706571797, 22.99468513245546, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.525038610773777, 21.86588720059519, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.681188764693836, 22.5710065826846, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.64203259573276, 22.84825519752747, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.60567329598319, 23.10570033988157, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.728735541289426, 22.234347550375396, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.781876056308029, 21.85808157308864, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.884885695209487, 22.939466932464807, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.84572952624841, 23.21671554730768, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.932432471805077, 22.602807900155604, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [15.98557298682368, 22.226541922868847, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [16.13612940232073, 22.971268249935807, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "comparison", "station": "green", "goal": [16.18926991733933, 22.59500227264905, -1.43049300675565], "final_pose_only": true, "swept_path": "accepted", "source": "analytical_reverse_arc"}
+{"sim_s": 256.7, "event": "executing_parking", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 281.4, "event": "verifying_park", "detail": "Confirming position, heading and stable standstill."}
+{"sim_s": 283.3, "event": "inspection", "station": "green", "decision": "parked"}
+{"sim_s": 283.3, "event": "parked", "detail": "Parking bay, perpendicular reverse entry and standstill verified."}

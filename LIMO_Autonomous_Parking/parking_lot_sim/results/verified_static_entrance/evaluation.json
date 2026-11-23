@@ -1,0 +1,25 @@
+{
+  "mission_status": "parked",
+  "samples_with_gazebo_pose": 730,
+  "baseline_accepted_attempts": 7,
+  "sweep_outcomes": {
+    "occupied_sweep": 6,
+    "accepted": 1
+  },
+  "braking_guard_samples": 25,
+  "reported_chassis_contact": false,
+  "world_error_from_start_alignment_m": 0.6680993254869662,
+  "world_heading_error_from_start_alignment_deg": 5.614374908387778,
+  "world_position_error_m": 0.1810251412073056,
+  "world_heading_error_deg": 4.263601545211413,
+  "final_world_rear_pose": [
+    15.337257998480965,
+    15.452633756466371,
+    -1.6537025072042941
+  ],
+  "matched_reference_zones": [
+    "S6"
+  ],
+  "sampled_static_clearance_m": 0.10973602416578,
+  "limiting_static_object": "car_S5_approach_1"
+}

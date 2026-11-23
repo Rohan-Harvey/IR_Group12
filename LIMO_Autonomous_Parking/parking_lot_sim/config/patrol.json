@@ -1,0 +1,26 @@
+{
+  "description": "Survey route relative to the entrance home pose; no obstacle or parking-space ground truth is consumed.",
+  "home_world_pose_m_deg": [-30.0, -9.0, 0.0],
+  "join_center_x_m": 18.0,
+  "loop_rear_axle_bounds_m": [9.0, 1.65, 51.0, 17.6],
+  "corner_radius_m": 4.8,
+  "sample_step_m": 0.15,
+  "cruise_speed_m_s": 1.45,
+  "corner_speed_m_s": 0.65,
+  "reverse_speed_m_s": 0.4,
+  "planner_min_turning_radius_m": 4.6,
+  "goal_horizon_m": 8.0,
+  "goal_refresh_distance_m": 2.5,
+  "goal_position_tolerance_m": 0.3,
+  "goal_heading_tolerance_rad": 0.18,
+  "parking_inspections": [
+    {"name": "white", "aisle_distance_m": 13.0, "check_distance_m": 13.0, "pass_only": true},
+    {"name": "blue", "aisle_distance_m": 26.9, "check_distance_m": 26.9},
+    {"name": "red", "aisle_distance_m": 52.8, "check_distance_m": 52.8},
+    {"name": "yellow", "aisle_distance_m": 66.7, "check_distance_m": 66.7},
+    {"name": "green", "aisle_distance_m": 80.55, "check_distance_m": 84.6}
+  ],
+  "map_output": "maps/parking_lot",
+  "navigation_map_padding_m": 4.0,
+  "map_preview_max_points": 60000
+}

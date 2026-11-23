@@ -1,0 +1,134 @@
+{"sim_s": 0.4, "event": "choosing", "detail": "Laser, near-ground sensors, SLAM and planner are ready."}
+{"sim_s": 0.4, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 0.499, "event": "executing_survey", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 8.1, "event": "choosing", "detail": "Survey waypoint reached."}
+{"sim_s": 8.3, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 8.684, "event": "executing_survey", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 18.3, "event": "choosing", "detail": "Survey waypoint reached."}
+{"sim_s": 18.5, "event": "planning_parking", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 18.683, "event": "comparison", "goal": [8.218327723358081, -6.2814045113917585, 1.5489534155898879], "final_pose_only": true, "swept_path": "occupied_sweep"}
+{"sim_s": 18.683, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 19.0, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 19.195, "event": "executing_survey", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 28.2, "event": "choosing", "detail": "Survey waypoint reached."}
+{"sim_s": 28.4, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 28.574, "event": "executing_survey", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 37.6, "event": "choosing", "detail": "Survey waypoint reached."}
+{"sim_s": 37.8, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 38.014, "event": "executing_survey", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 49.0, "event": "choosing", "detail": "Survey waypoint reached."}
+{"sim_s": 49.2, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 49.378, "event": "executing_survey", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 58.7, "event": "choosing", "detail": "Survey waypoint reached."}
+{"sim_s": 58.915, "event": "planning_parking", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 60.236, "event": "comparison", "goal": [45.43254749094065, -5.351745192338839, 1.537663642252098], "final_pose_only": true, "swept_path": "occupied_sweep"}
+{"sim_s": 60.236, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 60.507, "event": "planning_parking", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 60.696, "event": "comparison", "goal": [44.770055565290654, -4.1293478032603375, 1.5407603808227817], "final_pose_only": true, "swept_path": "occupied_sweep"}
+{"sim_s": 60.696, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 61.0, "event": "planning_parking", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 61.173, "event": "comparison", "goal": [44.796991815703365, -3.3298438045482808, 1.541367430412464], "final_pose_only": true, "swept_path": "occupied_sweep"}
+{"sim_s": 61.173, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 61.5, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 61.7, "event": "executing_survey", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 78.3, "event": "execution_interrupted", "task": "survey", "reason": "braking_clearance"}
+{"sim_s": 78.3, "event": "choosing", "detail": "braking_clearance"}
+{"sim_s": 78.9, "event": "executing_recovery", "detail": "Retrace a short, observed portion of the previous route."}
+{"sim_s": 88.1, "event": "choosing", "detail": "Survey waypoint reached."}
+{"sim_s": 88.3, "event": "planning_parking", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 88.553, "event": "comparison", "goal": [50.99171667928367, 7.051278478387323, -1.5916418360706586], "final_pose_only": true, "swept_path": "occupied_sweep"}
+{"sim_s": 88.553, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 88.9, "event": "planning_parking", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 89.152, "event": "comparison", "goal": [50.97444231141987, 6.2516052883358935, -1.5915163739137927], "final_pose_only": true, "swept_path": "occupied_sweep"}
+{"sim_s": 89.152, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 89.5, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 89.756, "event": "survey_target_rejected", "goal": [57.75521536860282, 1.4929254700997105, 0.002135633807391178], "reason": "occupied_sweep"}
+{"sim_s": 89.756, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 90.1, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 90.349, "event": "survey_target_rejected", "goal": [57.63071088076826, 2.8818481630334913, 0.17666855900682413], "reason": "occupied_sweep"}
+{"sim_s": 90.349, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 90.604, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 90.871, "event": "survey_target_rejected", "goal": [57.6366444589589, 0.10348365634010515, -0.17239729139204177], "reason": "occupied_sweep"}
+{"sim_s": 90.871, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 91.2, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 91.429, "event": "survey_target_rejected", "goal": [57.26691400131579, 4.228050021945448, 0.35120148420625713], "reason": "occupied_sweep"}
+{"sim_s": 91.429, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 91.7, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 91.9, "event": "survey_target_rejected", "goal": [57.27860086892627, -1.2442597918257223, -0.3469302165914747], "reason": "occupied_sweep"}
+{"sim_s": 91.9, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 92.205, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 92.4, "event": "survey_target_rejected", "goal": [57.26691400131579, 4.228050021945448, 0.002135633807391178], "reason": "occupied_sweep"}
+{"sim_s": 92.4, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 92.7, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 92.9, "event": "survey_target_rejected", "goal": [57.27860086892627, -1.2442597918257223, 0.002135633807391178], "reason": "occupied_sweep"}
+{"sim_s": 92.9, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 93.2, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 93.43, "event": "survey_target_rejected", "goal": [52.475333816776526, 8.999207669231236, 1.2238661102034218], "reason": "occupied_sweep"}
+{"sim_s": 93.43, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 93.7, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 93.904, "event": "executing_survey", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 94.0, "event": "direction_change", "stopped_v": 0.0}
+{"sim_s": 106.0, "event": "direction_change", "stopped_v": -0.023406479499683178}
+{"sim_s": 116.6, "event": "choosing", "detail": "Survey waypoint reached."}
+{"sim_s": 116.8, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 117.076, "event": "executing_survey", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 117.101, "event": "direction_change", "stopped_v": 0.0018412697205732523}
+{"sim_s": 130.1, "event": "choosing", "detail": "Survey waypoint reached."}
+{"sim_s": 130.3, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 130.61, "event": "survey_target_rejected", "goal": [52.839816059887504, 22.690519204504028, 1.5750070005719552], "reason": "occupied_sweep"}
+{"sim_s": 130.61, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 130.9, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 131.239, "event": "survey_target_rejected", "goal": [52.848237382556874, 20.69053693425149, 1.5750070005719552], "reason": "occupied_sweep"}
+{"sim_s": 131.239, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 131.5, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 131.804, "event": "survey_target_rejected", "goal": [56.8442935736095, 21.635574581461317, 1.0514082249736563], "reason": "occupied_sweep"}
+{"sim_s": 131.804, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 132.1, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 132.386, "event": "survey_target_rejected", "goal": [56.8442935736095, 21.635574581461317, 1.4004740753725222], "reason": "occupied_sweep"}
+{"sim_s": 132.386, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 132.7, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 132.961, "event": "survey_target_rejected", "goal": [52.854553374558904, 19.190550231562085, 1.5750070005719552], "reason": "occupied_sweep"}
+{"sim_s": 132.961, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 133.3, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 133.564, "event": "survey_target_rejected", "goal": [52.07343136455038, 19.11889544466117, 1.7495399257713882], "reason": "occupied_sweep"}
+{"sim_s": 133.564, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 133.9, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 134.18, "event": "survey_target_rejected", "goal": [52.860027234294, 17.890561755897938, 1.5750070005719552], "reason": "occupied_sweep"}
+{"sim_s": 134.18, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 134.5, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 134.792, "event": "survey_target_rejected", "goal": [52.07343136455038, 19.11889544466117, 1.4004740753725222], "reason": "occupied_sweep"}
+{"sim_s": 134.792, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 135.1, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 135.313, "event": "survey_target_rejected", "goal": [59.156792758736856, 19.642382635301463, 0.6674357895349038], "reason": "planner_result_204"}
+{"sim_s": 135.313, "event": "choosing", "detail": "planner_result_204"}
+{"sim_s": 135.6, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 135.808, "event": "survey_target_rejected", "goal": [57.5859699066939, 18.404434507349563, 0.6674357895349038], "reason": "planner_result_204"}
+{"sim_s": 135.808, "event": "choosing", "detail": "planner_result_204"}
+{"sim_s": 136.1, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 136.3, "event": "survey_target_rejected", "goal": [59.156792758736856, 19.642382635301463, 1.4004740753725222], "reason": "planner_result_204"}
+{"sim_s": 136.3, "event": "choosing", "detail": "planner_result_204"}
+{"sim_s": 136.6, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 136.8, "event": "survey_target_rejected", "goal": [57.5859699066939, 18.404434507349563, 1.4004740753725222], "reason": "planner_result_204"}
+{"sim_s": 136.8, "event": "choosing", "detail": "planner_result_204"}
+{"sim_s": 137.1, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 137.43, "event": "survey_target_rejected", "goal": [50.472817006040735, 18.49673182841713, 2.1335123612101405], "reason": "occupied_sweep"}
+{"sim_s": 137.43, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 137.7, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 137.991, "event": "survey_target_rejected", "goal": [56.40785276766167, 17.47597341138564, 0.6674357895349038], "reason": "occupied_sweep"}
+{"sim_s": 137.991, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 138.3, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 138.623, "event": "survey_target_rejected", "goal": [50.472817006040735, 18.49673182841713, 1.4004740753725222], "reason": "occupied_sweep"}
+{"sim_s": 138.623, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 138.925, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 139.216, "event": "survey_target_rejected", "goal": [56.40785276766167, 17.47597341138564, 1.4004740753725222], "reason": "occupied_sweep"}
+{"sim_s": 139.216, "event": "choosing", "detail": "occupied_sweep"}
+{"sim_s": 139.5, "event": "planning_survey", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 139.767, "event": "executing_survey", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 142.9, "event": "direction_change", "stopped_v": -0.02919777738191183}
+{"sim_s": 150.2, "event": "choosing", "detail": "Survey waypoint reached."}
+{"sim_s": 150.4, "event": "planning_parking", "detail": "The vehicle is held while the route is planned."}
+{"sim_s": 150.661, "event": "comparison", "goal": [45.703766593054965, 24.097789196951407, -1.5557131795639614], "final_pose_only": true, "swept_path": "accepted", "direction_changes": 1}
+{"sim_s": 150.661, "event": "executing_parking", "detail": "Path accepted after full-footprint inspection."}
+{"sim_s": 169.0, "event": "direction_change", "stopped_v": 0.005860287997612499}
+{"sim_s": 183.9, "event": "verifying_park", "detail": "Confirming position, heading and stable standstill."}
+{"sim_s": 185.7, "event": "parked", "detail": "Perpendicular reverse-in finished and standstill verified."}
