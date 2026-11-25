@@ -1,0 +1,21 @@
+{
+  "survey_speed_m_s": 1.58,
+  "mapping_speed_m_s": 1.75,
+  "inspection_transit_speed_m_s": 1.65,
+  "survey_return_speed_m_s": 0.85,
+  "inspection_speed_m_s": 0.85,
+  "approach_speed_m_s": 0.55,
+  "reverse_speed_m_s": 0.40,
+  "planning_radius_m": 4.75,
+  "grid_resolution_m": 0.12,
+  "parking_clearance_m": 0.10,
+  "braking_m_s2": 0.34,
+  "reaction_time_s": 0.30,
+  "runtime_clearance_m": 0.09,
+  "pedestrian_expansion_m": 0.12,
+  "obstacle_wait_s": 7.0,
+  "mission_timeout_s": 650.0,
+  "final_position_m": 0.32,
+  "final_yaw_deg": 10.0,
+  "standstill_s": 1.5
+}

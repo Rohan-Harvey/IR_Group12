@@ -1,0 +1,53 @@
+{
+  "seed": 12,
+  "scale": 1.0,
+  "layout_mode": "scenarios",
+  "include_robot": true,
+  "include_pedestrians": true,
+  "random_angle_range_deg": 35.0,
+  "minimum_car_clearance_m": 0.08,
+  "columns": 12,
+  "bay_width_m": 2.8,
+  "bay_depth_m": 5.2,
+  "rows": [
+    {
+      "id": "A",
+      "y_m": 14.8,
+      "yaw_deg": 90.0
+    },
+    {
+      "id": "B",
+      "y_m": 3.2,
+      "yaw_deg": -90.0
+    },
+    {
+      "id": "C",
+      "y_m": -3.2,
+      "yaw_deg": 90.0
+    },
+    {
+      "id": "D",
+      "y_m": -14.8,
+      "yaw_deg": -90.0
+    }
+  ],
+  "empty_bays": [
+    "A04",
+    "A09",
+    "B03",
+    "B07",
+    "B08",
+    "C05",
+    "C10",
+    "D02",
+    "D06",
+    "D11"
+  ],
+  "angle_offsets_deg": {},
+  "suggested_robot_spawn": {
+    "x_m": -30.0,
+    "y_m": -9.0,
+    "z_m": 0.03,
+    "yaw_deg": 0.0
+  }
+}
